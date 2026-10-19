@@ -318,7 +318,7 @@ html,body{overflow-x:clip}
 #teachers .tch__photo{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center top;border-radius:16px;background:var(--grey)}
 #teachers .tch__mods{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 #teachers .tch__mods li{display:inline-flex;align-items:baseline;gap:8px;background:var(--orange);color:#fff;border-radius:var(--r-pill);padding:6px 12px;font-size:.9rem;line-height:1;font-weight:600;white-space:nowrap}
-#teachers .tch__mods i{font-style:italic;font-weight:800}
+#teachers .tch__mods i{font-style:normal;font-weight:800}
 #teachers .tch__mods span{font-weight:400;opacity:.9}
 #teachers .tch__card h3{margin:4px 0 0;font-size:clamp(1.15rem,1rem + .5vw,1.5rem);line-height:1.2;font-weight:600;letter-spacing:-.01em}
 #teachers .tch__card p{margin:0;font-size:1rem;line-height:1.45;font-weight:300;color:#3a3a3d}
