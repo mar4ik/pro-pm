@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="">
+    <defs>
+        <linearGradient id="dpanel" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#232338"/>
+            <stop offset="1" stop-color="#14142a"/>
+        </linearGradient>
+        <linearGradient id="dwarm" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff5e16"/>
+            <stop offset="1" stop-color="#ffc44b"/>
+        </linearGradient>
+        <radialGradient id="spot" cx="50%" cy="0%" r="75%">
+            <stop offset="0" stop-color="#ffc44b" stop-opacity=".30"/>
+            <stop offset="1" stop-color="#ffc44b" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="dframe">
+            <rect width="800" height="500" rx="20"/>
+        </clipPath>
+    </defs>
+
+    <g clip-path="url(#dframe)">
+        <rect width="800" height="500" fill="url(#dpanel)"/>
+        <rect width="800" height="500" fill="url(#spot)"/>
+
+        <!-- the screen on stage -->
+        <rect x="236" y="70" width="328" height="196" rx="16" fill="#ffffff" opacity=".96"/>
+        <rect x="262" y="100" width="150" height="12" rx="6" fill="#1a1a1a" opacity=".8"/>
+        <rect x="262" y="124" width="104" height="9" rx="4.5" fill="#1a1a1a" opacity=".3"/>
+
+        <!-- a small chart on the slide -->
+        <g>
+            <rect x="262" y="160" width="26" height="70" rx="5" fill="#2038c9" opacity=".25"/>
+            <rect x="298" y="142" width="26" height="88" rx="5" fill="#2038c9" opacity=".45"/>
+            <rect x="334" y="120" width="26" height="110" rx="5" fill="#ff5e16"/>
+            <rect x="386" y="160" width="152" height="8" rx="4" fill="#1a1a1a" opacity=".18"/>
+            <rect x="386" y="182" width="120" height="8" rx="4" fill="#1a1a1a" opacity=".18"/>
+            <rect x="386" y="204" width="138" height="8" rx="4" fill="#1a1a1a" opacity=".18"/>
+        </g>
+
+        <!-- stand -->
+        <rect x="392" y="266" width="16" height="34" rx="6" fill="#ffffff" opacity=".22"/>
+        <rect x="336" y="300" width="128" height="10" rx="5" fill="#ffffff" opacity=".18"/>
+
+        <!-- five finalists; the middle one wins -->
+        <g>
+            <g>
+                <circle cx="128" cy="392" r="30" fill="#ffffff" opacity=".10"/>
+                <rect x="104" y="436" width="48" height="8" rx="4" fill="#ffffff" opacity=".22"/>
+            </g>
+            <g>
+                <circle cx="252" cy="392" r="30" fill="#ffffff" opacity=".10"/>
+                <rect x="228" y="436" width="48" height="8" rx="4" fill="#ffffff" opacity=".22"/>
+            </g>
+            <g>
+                <circle cx="400" cy="386" r="42" fill="url(#dwarm)"/>
+                <circle cx="400" cy="386" r="54" fill="none" stroke="#ffc44b" stroke-width="1.5" opacity=".5"/>
+                <path d="M389 386l7 7 15-16" stroke="#1a1a1a" stroke-width="3.4" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" opacity=".8"/>
+                <rect x="364" y="448" width="72" height="9" rx="4.5" fill="#ffc44b" opacity=".85"/>
+            </g>
+            <g>
+                <circle cx="548" cy="392" r="30" fill="#ffffff" opacity=".10"/>
+                <rect x="524" y="436" width="48" height="8" rx="4" fill="#ffffff" opacity=".22"/>
+            </g>
+            <g>
+                <circle cx="672" cy="392" r="30" fill="#ffffff" opacity=".10"/>
+                <rect x="648" y="436" width="48" height="8" rx="4" fill="#ffffff" opacity=".22"/>
+            </g>
+        </g>
+
+        <!-- sparks -->
+        <g fill="#ffc44b" opacity=".55">
+            <circle cx="156" cy="120" r="3"/>
+            <circle cx="660" cy="150" r="4"/>
+            <circle cx="96" cy="230" r="2.5"/>
+            <circle cx="712" cy="268" r="2.5"/>
+            <circle cx="600" cy="92" r="2"/>
+        </g>
+    </g>
+</svg>
