@@ -303,18 +303,16 @@ html,body{overflow-x:clip}
 #demo-day .demo__steps h3{margin:0;font-size:1.05rem;line-height:1.3;font-weight:600}
 @media (max-width:640px){#demo-day .demo__steps{grid-template-columns:1fr}#demo-day .demo__steps li{min-height:150px;padding-top:56px}}
 
-/* ---- audience jigsaw ---- */
-.pz__piece{transform-box:fill-box;transform-origin:center;animation:pzFit 10s cubic-bezier(.3,1.4,.4,1) infinite both;transition:filter .25s}
+/* ---- audience jigsaw: one piece at a time, huge in the middle, then the next ---- */
+.pz__piece{transform-box:fill-box;transform-origin:center;animation:pzSolo 12s ease-in-out infinite both;transition:filter .25s}
 .pz__piece.is-lit{filter:brightness(1.08) drop-shadow(0 6px 10px rgba(0,0,0,.35))}
 .pz__piece{cursor:default}
-@keyframes pzFit{
-  0%{transform:translate(var(--sx),var(--sy)) rotate(var(--sr));opacity:0}
-  3%{opacity:1}
-  18%{transform:translate(0,0) rotate(0deg);opacity:1}
-  78%{transform:translate(0,0) rotate(0deg);opacity:1}
-  86%{transform:translate(calc(var(--sx) * .12),calc(var(--sy) * .12)) rotate(calc(var(--sr) * .25));opacity:1}
-  96%{transform:translate(var(--sx),var(--sy)) rotate(var(--sr));opacity:0}
-  100%{transform:translate(var(--sx),var(--sy)) rotate(var(--sr));opacity:0}
+@keyframes pzSolo{
+  0%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(1.3)}
+  4%{opacity:1;transform:translate(var(--cx),var(--cy)) scale(1.95)}
+  21%{opacity:1;transform:translate(var(--cx),var(--cy)) scale(2.05)}
+  25%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(1.6)}
+  100%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(1.6)}
 }
 @media (prefers-reduced-motion:reduce){.pz__piece{animation:none;transform:none;opacity:1}}
 
