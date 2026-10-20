@@ -356,5 +356,5 @@ html,body{overflow-x:clip}
 @media (prefers-reduced-motion:reduce){#hero .hero__team{animation:none}#hero .fx__b{animation:none;opacity:1}}
 
 /* ---- hero: The Idea Factory ---- */
-#hero .hero__factory{width:100%;min-width:0}
+#hero .hero__factory{width:100%;min-width:0;align-self:center}
 @media (max-width:1000px){#hero .hero__factory{order:1}}
