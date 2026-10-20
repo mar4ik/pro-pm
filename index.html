@@ -324,7 +324,37 @@
       }
       svg.innerHTML=h; mount.appendChild(svg);
     }
-    [].slice.call(document.querySelectorAll('.kal-mount')).forEach(build);
+    // Audience: a four-piece jigsaw. PM, Product and project leads fly in and lock together; the AI piece drops in last to complete it.
+    function piecePath(e){ // e = [top,right,bottom,left]: 1 knob out, -1 socket in, 0 flat; 100x100 piece, bump 18 deep
+      var S=100,K=18,d='M0 0';
+      var edges=[[[0,0],[S,0],[0,-1]],[[S,0],[S,S],[1,0]],[[S,S],[0,S],[0,1]],[[0,S],[0,0],[-1,0]]];
+      edges.forEach(function(ed,i){
+        var p0=ed[0],p1=ed[1],n=ed[2],t=e[i];
+        if(!t){ d+=' L'+p1[0]+' '+p1[1]; return; }
+        var dx=p1[0]-p0[0],dy=p1[1]-p0[1],a=[p0[0]+dx*.36,p0[1]+dy*.36],b=[p0[0]+dx*.64,p0[1]+dy*.64],k=K*t;
+        d+=' L'+a[0]+' '+a[1]+' C'+(a[0]+n[0]*k*1.6)+' '+(a[1]+n[1]*k*1.6)+' '+(b[0]+n[0]*k*1.6)+' '+(b[1]+n[1]*k*1.6)+' '+b[0]+' '+b[1]+' L'+p1[0]+' '+p1[1];
+      });
+      return d+' Z';
+    }
+    function buildPuzzle(mount){
+      var P=[ {x:0,  y:0,  e:[0,1,-1,0], c:'#FFCA53', ink:'#1E1E21', t:'PM',       sx:-150,sy:-50, r:-14, d:0},
+              {x:100,y:0,  e:[0,0,1,-1], c:'#A2D4FF', ink:'#1E1E21', t:'Product',  sx:160, sy:-70, r:12,  d:.4},
+              {x:0,  y:100,e:[1,-1,0,0], c:'#FFB0E8', ink:'#1E1E21', t:'Նախագիծ', sx:-140,sy:150, r:10,  d:.8},
+              {x:100,y:100,e:[-1,0,0,1], c:'#FF5E16', ink:'#FFFFFF', t:'AI',       sx:170, sy:170, r:-18, d:1.5} ];
+      var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','kal puzzle'); svg.setAttribute('viewBox','-24 -24 248 248');
+      svg.innerHTML=P.map(function(p,i){
+        return '<g transform="translate('+p.x+' '+p.y+')"><g class="pz__piece" data-piece="'+i+'" style="--sx:'+p.sx+'px;--sy:'+p.sy+'px;--sr:'+p.r+'deg;animation-delay:'+p.d+'s">'+
+               '<path d="'+piecePath(p.e)+'" fill="'+p.c+'"/>'+
+               '<text x="'+(p.t.length>5?46:50)+'" y="50" text-anchor="middle" dominant-baseline="central" font-family="var(--font)" font-weight="800" font-style="italic" font-size="'+(p.t.length>5?14:20)+'" fill="'+p.ink+'">'+p.t+'</text></g></g>';
+      }).join('');
+      mount.appendChild(svg);
+      var cards=document.querySelectorAll('#audience .aud__cards li'), pieces=svg.querySelectorAll('.pz__piece');
+      cards.forEach(function(card,i){ // hovering a card lifts its piece
+        card.addEventListener('mouseenter',function(){ pieces[i]&&pieces[i].classList.add('is-lit'); });
+        card.addEventListener('mouseleave',function(){ pieces[i]&&pieces[i].classList.remove('is-lit'); });
+      });
+    }
+    [].slice.call(document.querySelectorAll('.kal-mount')).forEach(function(m){ m.dataset.kal==='audience'?buildPuzzle(m):build(m); });
   })();
 </script>
 
