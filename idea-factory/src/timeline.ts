@@ -11,11 +11,11 @@ export interface FactoryTimelines {
 export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   const q = gsap.utils.selector(svg);
   const BULB = 4.2;
-  const spots = [[-130, -130], [0, -10], [130, 110]];
+  const spots = [[-24, -146], [0, 0], [24, 146]];   // three big cards stacked, slightly cascaded
 
   const reset = () => {
     gsap.set(q('#bulb'), { x: 300, y: -260, scale: BULB, opacity: 1, transformOrigin: '50% 100%' });
-    gsap.set(q('.idea'), { x: 300, y: 340, scale: 0, opacity: 1, transformOrigin: '50% 50%' });
+    gsap.set(q('.idea'), { x: 300, y: 300, scale: 0, opacity: 1, transformOrigin: '50% 50%' });
     gsap.set(q('.idea__label, .idea__check'), { opacity: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#ev-stage'), { scaleY: 0, scaleX: 0.6, opacity: 1, transformOrigin: '50% 100%' });
     gsap.set(q('.ev-chair'), { x: -140, opacity: 0 });
@@ -44,7 +44,7 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   tl.addLabel('ideas', LABELS.ideas);
   spots.forEach(([dx, dy], i) => {
     const at = 3.0 + i * 0.55;
-    tl.to(q(`#idea-${i + 1}`), { scale: 1, x: 300 + dx, y: 340 + dy, duration: 0.7, ease: 'back.out(1.8)' }, at)
+    tl.to(q(`#idea-${i + 1}`), { scale: 1, x: 300 + dx, y: 300 + dy, duration: 0.7, ease: 'back.out(1.8)' }, at)
       .to(q(`#idea-${i + 1} .idea__label`), { opacity: 1, duration: 0.35 }, at + 0.4)
       .to(q(`#idea-${i + 1}`), { y: `+=${i % 2 ? 10 : -10}`, duration: 1.1, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 4.8 + i * 0.1)
       .to(q(`#idea-${i + 1}`), { x: 300, y: 400, scale: 0.15, opacity: 0, duration: 0.6, ease: 'power3.in' }, 6.7 + i * 0.07);

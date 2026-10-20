@@ -1,6 +1,6 @@
 # The Idea Factory
 
-A 16-second looping SVG + GSAP film for the hero of the AI քեզ Project Manager landing page. One huge lamp drops in, bursts into idea bubbles, which gather into an event stage, which becomes a phone, and the loop restarts. No people, machines or controls; the hero supplies the ink background.
+A 16-second looping SVG + GSAP film for the hero of the AI քեզ Project Manager landing page. One huge lamp drops in, bursts into three plan cards, which gather into an event stage, which becomes a phone, and the loop restarts. No people, machines or controls; the hero supplies the ink background.
 
 ## Stack
 
@@ -10,7 +10,7 @@ A 16-second looping SVG + GSAP film for the hero of the AI քեզ Project Manage
 - Mounting and reduced-motion handling (`src/IdeaFactory.tsx`)
 - Styling in `src/styles.css`, colours mapped onto the AI Քեզ Բան brand palette
 
-Every movable SVG group has an id (`bulb`, `idea-1`…`idea-5`, `ev-stage`, `phone`, `ui-*`) so parts can be animated independently.
+Every movable SVG group has an id (`bulb`, `idea-1`…`idea-3`, `ev-stage`, `phone`, `ui-*`) so parts can be animated independently.
 
 ## Run locally
 

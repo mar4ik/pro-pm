@@ -8,18 +8,17 @@ export const C = {
 
 export const VIEW = { full: '60 60 480 480' };
 
-/** A brand chat box, 190×112, origin at its centre, tail bottom-left, one word inside. */
-function ChatBox({ id, fill, ink, label, check }: { id: string; fill: string; ink: string; label: string; check?: boolean }) {
+/** A big plan card, 360×128, origin at its centre, one word inside, optional green check. */
+function Card({ id, fill, ink, label, check }: { id: string; fill: string; ink: string; label: string; check?: boolean }) {
   return (
     <g id={id} className="idea">
-      <rect x={-95} y={-56} width={190} height={112} rx={24} fill={fill} />
-      <path d="M-70 54 L-84 84 L-36 54 Z" fill={fill} />
-      <text className="idea__label" x={check ? -12 : 0} y={0} textAnchor="middle" dominantBaseline="central"
-        fontFamily="Adelle Sans ARM, system-ui, sans-serif" fontWeight={700} fontSize={30} fill={ink}>{label}</text>
+      <rect x={-180} y={-64} width={360} height={128} rx={28} fill={fill} />
+      <text className="idea__label" x={check ? -26 : 0} y={0} textAnchor="middle" dominantBaseline="central"
+        fontFamily="Adelle Sans ARM, system-ui, sans-serif" fontWeight={700} fontSize={42} fill={ink}>{label}</text>
       {check && (
         <g className="idea__check">
-          <circle cx={64} cy={-30} r={16} fill="#16A34A" />
-          <path d="M56 -30 L61.5 -24.5 L72 -36" fill="none" stroke="#fff" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx={126} cy={0} r={24} fill="#16A34A" />
+          <path d="M114 0 L122 8 L138 -9" fill="none" stroke="#fff" strokeWidth={4.5} strokeLinecap="round" strokeLinejoin="round" />
         </g>
       )}
     </g>
@@ -57,11 +56,11 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
         <circle cx={-7} cy={-41} r={3} fill="#fff" opacity={0.7} />
       </g>
 
-      {/* ---------- 2. chat boxes: plan, in progress, done ---------- */}
+      {/* ---------- 2. plan cards: plan, in progress, done ---------- */}
       <g id="ideas">
-        <ChatBox id="idea-1" fill={C.cream} ink={C.ink} label="Պլան" />
-        <ChatBox id="idea-2" fill={C.amber} ink={C.ink} label="Ընթացք" />
-        <ChatBox id="idea-3" fill={C.navy} ink="#fff" label="Արված" check />
+        <Card id="idea-1" fill={C.cream} ink={C.ink} label="Պլան" />
+        <Card id="idea-2" fill={C.amber} ink={C.ink} label="Ընթացք" />
+        <Card id="idea-3" fill={C.navy} ink="#fff" label="Արված" check />
       </g>
 
       {/* ---------- 3. the event stage (bottom centre at 300,470) ---------- */}
