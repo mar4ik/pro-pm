@@ -6,7 +6,7 @@ export const C = {
   cream: '#F5F5F5', amber: '#FFCA53', coral: '#FFB0E8', teal: '#00C4B1', lemon: '#ffe45c', grey: '#D1D1D1',
 };
 
-export const VIEW = { full: '0 0 600 600' };
+export const VIEW = { full: '30 30 540 540' };
 
 /** A brand speech bubble, 130×84, origin at its centre, tail bottom-left. */
 function IdeaBubble({ id, fill }: { id: string; fill: string }) {
