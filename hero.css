@@ -259,7 +259,7 @@ html,body{overflow-x:clip}
 @media (max-width:1000px){#faq .faq__grid{grid-template-columns:1fr}#faq .faq__side{display:none}}
 #contact .con__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
 @media (max-width:1000px){#contact .con__grid{grid-template-columns:1fr}}
-#contact .con__logo{display:block;width:auto;max-width:none;margin:0 0 18px calc(1.35 * clamp(1.3rem,1rem + .8vw,1.75rem));object-fit:contain}
+#contact .con__logo{display:block;width:auto;max-width:none;margin:0 0 18px;object-fit:contain}
 #contact .con__logo--aiqb{height:32px}
 #contact .con__logo--mam{height:44px}
 
