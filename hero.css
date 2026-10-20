@@ -204,7 +204,7 @@ html,body{overflow-x:clip}
 #register .treg__submit:hover{background:var(--orange-deep)}
 #register .form__status{margin:0;font-size:.9rem;color:var(--grey)}
 #register .ticket-wrap{justify-self:start;width:100%;max-width:520px}
-@media (max-width:1000px){#register .reg__grid{grid-template-columns:1fr}#register .reg__main,#register .ticket-wrap{max-width:none;width:100%}#register .ticket-wrap{justify-self:stretch}}
+@media (max-width:1000px){#register .reg__grid{grid-template-columns:1fr}#register .reg__main,#register .ticket-wrap{max-width:none;width:100%}#register .ticket-wrap{justify-self:stretch;order:-1}}
 
 /* the new sections share one centred container, narrower than the page's 1440px shell */
 
