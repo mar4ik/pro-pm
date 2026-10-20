@@ -12,7 +12,7 @@ export function IdeaFactory() {
     const svg = svgRef.current; if (!svg) return;
     // phones get a shorter frame so the empty drop zone above the machines does not eat the screen
     const mq = window.matchMedia('(max-width: 760px)');
-    const frame = () => svg.setAttribute('viewBox', mq.matches ? '150 -40 880 610' : '150 -230 880 800');
+    const frame = () => svg.setAttribute('viewBox', mq.matches ? '270 -40 800 600' : '270 -230 800 790');
     frame(); mq.addEventListener('change', frame);
     const t = buildTimelines(svg);
     window.__factory = t.master;

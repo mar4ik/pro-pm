@@ -33,7 +33,7 @@ html,body{overflow-x:clip}
 #hero .eyes.on-light i{background:#1E1E21}
 #hero .eyes.on-light i::after{background:#fff}
 #hero{padding:clamp(48px,4rem + 2vw,96px) 0 clamp(40px,3rem + 2vw,72px);border-bottom:1px solid #3a3a3e}
-#hero .hero__grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,4vw,72px);align-items:center}
+#hero .hero__grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,4vw,72px);align-items:center}
 :is(#hero,#register) .tag{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-size:.9rem;font-weight:600;line-height:1;padding:9px 14px;border-radius:var(--r-pill)}
 :is(#hero,#register) .ticket__tag{align-self:flex-start;width:max-content;max-width:100%;margin:0}
 #hero .hero__tag{width:max-content;max-width:100%;margin:0 0 18px}
@@ -356,5 +356,5 @@ html,body{overflow-x:clip}
 @media (prefers-reduced-motion:reduce){#hero .hero__team{animation:none}#hero .fx__b{animation:none;opacity:1}}
 
 /* ---- hero: The Idea Factory ---- */
-#hero .hero__factory{width:100%;min-width:0;align-self:center}
+#hero .hero__factory{width:100%;max-width:520px;min-width:0;align-self:center;justify-self:center}
 @media (max-width:1000px){#hero .hero__factory{order:1}}

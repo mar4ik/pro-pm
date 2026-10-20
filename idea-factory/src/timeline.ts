@@ -15,10 +15,9 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
 
   // ---- initial state -------------------------------------------------------------------------
   const reset = () => {
-    gsap.set(q('#bulb'), { x: 200, y: -300, scale: BULB, opacity: 1, transformOrigin: '50% 100%' });
+    gsap.set(q('#bulb'), { x: 400, y: -300, scale: BULB, opacity: 1, transformOrigin: '50% 100%' });
     gsap.set(q('#plan'), { x: 548, y: 466, scale: 0, opacity: 1, transformOrigin: '50% 100%' });
     gsap.set(q('#ticket'), { x: 702, y: 466, scale: 0, opacity: 1, transformOrigin: '50% 80%' });
-    gsap.set(q('#stamp-head'), { y: 0 });
     gsap.set(q('.pm-card'), { scale: 0, x: 0, y: 0, opacity: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#pm-lever'), { rotation: -38, transformOrigin: '50% 100%' });
     gsap.set(q('#ev-stage'), { scaleY: 0, scaleX: 0.6, opacity: 1, transformOrigin: '50% 100%' });
@@ -28,7 +27,6 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
     gsap.set(q('.ev-beam'), { opacity: 0 });
     gsap.set(q('.ev-light'), { rotation: 0, transformOrigin: '50% 0%' });
     gsap.set(q('.ev-person'), { scale: 0, transformOrigin: '50% 100%' });
-    gsap.set(q('#ev-button'), { y: 0 });
     gsap.set(q('#phone'), { x: 0, y: 260, scale: 0.4, opacity: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#ui-nav, #ui-card-1, #ui-card-2, #ui-card-3, #ui-btn'), { scale: 0, x: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#ui-card-2'), { fill: '#FFB0E8' });
@@ -54,14 +52,9 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
     .to(q('#bulb'), { y: 460, duration: 1.5, ease: 'bounce.out' }, 0.3)
     .to(q('#bulb'), { scaleY: BULB * 0.82, scaleX: BULB * 1.12, duration: 0.1, ease: 'power1.out' }, 1.05)
     .to(q('#bulb'), { scaleY: BULB, scaleX: BULB, duration: 0.3, ease: 'elastic.out(1,0.5)' }, 1.15)
-    .to(q('#bulb'), { x: 266, duration: 1.3, ease: 'none' }, 1.7)
-    .to(q('#stamp-head'), { y: 60, duration: 0.22, ease: 'power3.in' }, 3.0)
-    .to(q('#bulb'), { scaleY: BULB * 0.86, duration: 0.1 }, 3.2)
-    .to(q('#bulb-glow'), { scale: 1.8, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: '50% 50%' }, 3.23)
-    .to(q('#bulb'), { scaleY: BULB, duration: 0.25, ease: 'back.out(2)' }, 3.3)
-    .to(q('#stamp-head'), { y: 0, duration: 0.45, ease: 'power2.out' }, 3.3)
-    .to(q('#bulb'), { x: 342, duration: 0.9, ease: 'none' }, 3.7)
-    .to(q('#bulb'), { scale: 0, duration: 0.3, ease: 'power2.in' }, 4.4);
+    .to(q('#bulb-glow'), { scale: 1.8, duration: 0.4, yoyo: true, repeat: 1, transformOrigin: '50% 50%' }, 2.0)
+    .to(q('#bulb'), { x: 436, duration: 1.4, ease: 'none' }, 2.6)
+    .to(q('#bulb'), { y: 300, scale: 0, duration: 0.4, ease: 'power2.in' }, 4.0);
 
   // Scene 2 — the plan machine (4.6–11.4s): cards burst out, fan, then pack into a plan
   tl.addLabel('pm', LABELS.pm)
@@ -82,9 +75,6 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
 
   // Scene 3 — the stage machine (11.4–18s): button, stage unfolds, becomes a ticket
   tl.addLabel('event', LABELS.event)
-    .to(q('#ev-button'), { y: 6, duration: 0.12, ease: 'power3.in' }, 12.0)
-    .to(q('#ev-button-glow'), { opacity: 1, duration: 0.2, yoyo: true, repeat: 1 }, 12.05)
-    .to(q('#ev-button'), { y: 0, duration: 0.3, ease: 'power2.out' }, 12.15)
     .to(q('#plan'), { scale: 0, duration: 0.3, ease: 'power2.in' }, 12.1)
     .to(q('#ev-stage'), { scaleY: 1, scaleX: 1, duration: 0.9, ease: 'back.out(1.3)' }, 12.2)
     .to(q('.ev-chair'), { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out', stagger: 0.08 }, 13.0)
