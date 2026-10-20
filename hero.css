@@ -367,3 +367,4 @@ html,body{overflow-x:clip}
 @media (max-width:1000px){#hero .hero__factory{order:1;align-self:auto}#hero .hero__factory .if-root{height:auto;width:100%}#hero .hero__factory .if-stage{height:auto}#hero .hero__factory .if-stage svg{height:auto}}
 
 #hero .lead p{margin-left:0;margin-right:0}
+#hero .h1-top{display:block;white-space:nowrap}
