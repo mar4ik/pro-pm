@@ -16,6 +16,8 @@
   --r-card:12px; --r-pill:999px;
 }
 html,body{overflow-x:clip}
+.pm-page{--page-max:1240px}
+@media (min-width:1181px){.pm-page{--page-gutter:100px}}
 #hero{background:var(--black);color:#fff;font-family:var(--font)}
 #hero h1, #hero h2{font-weight:800;font-style:italic;line-height:1.02;letter-spacing:-.024em;margin:0}
 #hero p{margin:0}
@@ -33,7 +35,7 @@ html,body{overflow-x:clip}
 #hero .eyes.on-light i{background:#1E1E21}
 #hero .eyes.on-light i::after{background:#fff}
 #hero{padding:clamp(48px,4rem + 2vw,96px) 0 clamp(40px,3rem + 2vw,72px);border-bottom:1px solid #3a3a3e}
-#hero .hero__grid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,460px);justify-content:center;gap:clamp(24px,3vw,40px);align-items:center}
+#hero .hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:clamp(24px,3vw,40px);align-items:center}
 :is(#hero,#register) .tag{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-size:.9rem;font-weight:600;line-height:1;padding:9px 14px;border-radius:var(--r-pill)}
 :is(#hero,#register) .ticket__tag{align-self:flex-start;width:max-content;max-width:100%;margin:0}
 #hero .hero__tags{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 18px}
@@ -99,20 +101,17 @@ html,body{overflow-x:clip}
 
 /* ===== Audience section ===== */
 #audience{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(32px,2rem + 1vw,48px) 0}
-#audience .aud__head{display:grid;grid-template-columns:minmax(0,1fr) auto;margin-bottom:0 !important;grid-template-areas:"title mascot" "lead mascot";column-gap:clamp(24px,4vw,64px);row-gap:20px;align-items:center;margin-bottom:clamp(28px,3vw,44px)}
+#audience .aud__head{display:grid;grid-template-columns:1fr;grid-template-areas:"title" "lead";row-gap:16px;margin-bottom:clamp(24px,3vw,36px)}
 #audience .aud__head h2{grid-area:title;align-self:end}
 #audience .aud__lead{grid-area:lead;align-self:start}
-#audience .aud__kal{grid-area:mascot;justify-self:end;width:clamp(260px,20vw + 60px,400px)}
-#audience .kal{display:block;width:100%;height:auto}
 #audience h2{margin:0;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
-#audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:#444;max-width:46ch}
+#audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:#444;max-width:62ch}
 #audience .aud__lead p{margin:0}
-@media (max-width:1000px){#audience .aud__head{grid-template-columns:1fr;grid-template-areas:"title" "lead" "mascot";row-gap:16px}#audience .aud__kal{justify-self:center;width:min(70vw,340px);margin-top:8px}}
 
 /* ===== Outcomes section (brand Blue) ===== */
 /* the rolling eyes logo (outcomes + programme): rolls across its column with real wheel rotation */
 @keyframes rollAcross{from{transform:translateX(0) rotate(0deg)}to{transform:translateX(var(--travel,0px)) rotate(var(--turns,0deg))}}
-#programme .cur__grid{display:grid;grid-template-columns:minmax(0,820px);gap:clamp(24px,4vw,64px);align-items:start}
+#programme .cur__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
 @media (max-width:1000px){#programme .cur__grid{grid-template-columns:1fr}#programme .cur__side{display:none}}
 
 /* ===== How we work (brand Grey) ===== */
@@ -131,9 +130,9 @@ html,body{overflow-x:clip}
 /* ===== Curriculum (ink) ===== */
 #programme{background:var(--black);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0}
 #programme h2{margin:0 0 clamp(28px,3vw,44px);font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
-#programme .cur__module{margin:clamp(28px,3vw,44px) 0 12px;text-align:left;max-width:820px;font-size:clamp(1.2rem,1rem + .8vw,1.7rem);line-height:1.2;font-weight:700;font-style:normal;letter-spacing:-.01em;color:var(--orange)}
+#programme .cur__module{margin:clamp(28px,3vw,44px) 0 12px;text-align:left;font-size:clamp(1.2rem,1rem + .8vw,1.7rem);line-height:1.2;font-weight:700;font-style:normal;letter-spacing:-.01em;color:var(--orange)}
 #programme .cur__module:first-of-type{margin-top:0}
-#programme .cur__lesson{background:var(--dark-raised);border-radius:18px;margin:0 0 10px;max-width:820px}
+#programme .cur__lesson{background:var(--dark-raised);border-radius:18px;margin:0 0 10px}
 #programme .cur__lesson summary{list-style:none;display:grid;grid-template-columns:3.2rem 1fr 28px;gap:14px;align-items:start;padding:18px 22px;cursor:pointer}
 #programme .cur__lesson summary::-webkit-details-marker{display:none}
 #programme .cur__n{font-weight:800;font-style:italic;font-size:1.6rem;line-height:1;margin-top:.02em}
@@ -215,7 +214,7 @@ html,body{overflow-x:clip}
 
 /* ===== Contact (ink) ===== */
 #contact{background:var(--blue);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0;margin:0}
-#contact .shell{max-width:1200px;margin-inline:auto}
+#contact .shell{max-width:var(--page-max);margin-inline:auto}
 #contact h2{margin:0 0 14px;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #contact .con__lead{margin:0 0 clamp(24px,3vw,40px);font-size:clamp(1.05rem,1rem + .4vw,1.25rem);line-height:1.4;font-weight:300;color:rgba(255,255,255,.85);max-width:50ch}
 #contact .con__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -241,7 +240,7 @@ html,body{overflow-x:clip}
 
 /* ---- teachers ---- */
 #teachers{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0;margin:0;overflow:hidden}
-#teachers .shell{max-width:1200px;margin-inline:auto}
+#teachers .shell{max-width:var(--page-max);margin-inline:auto}
 #teachers .tch__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(20px,2vw,32px)}
 #teachers h2{margin:0 0 12px;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #teachers .tch__lead{margin:0;font-size:clamp(1.05rem,1rem + .4vw,1.25rem);line-height:1.4;font-weight:300;max-width:52ch}
@@ -250,10 +249,10 @@ html,body{overflow-x:clip}
 #teachers .tch__btn svg{width:22px;height:22px}
 #teachers .tch__btn:hover{background:var(--black);color:#fff}
 #teachers .tch__btn:disabled{opacity:.3;cursor:default;background:transparent;color:var(--black)}
-#teachers .tch__viewport{width:100%}
-#teachers .tch__track{list-style:none;margin:0;max-width:none;width:100%;padding-inline:calc(max(0px,(100% - 1200px) / 2) + var(--page-gutter,16px));display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:calc(max(0px,(100% - 1200px) / 2) + var(--page-gutter,16px));-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+#teachers .tch__viewport{box-sizing:border-box;width:100%;max-width:var(--page-max);margin-inline:auto;padding-inline:var(--page-gutter)}
+#teachers .tch__track{list-style:none;margin:0;max-width:none;width:100%;padding:0 0 4px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 #teachers .tch__track::-webkit-scrollbar{display:none}
-#teachers .tch__card{flex:0 0 clamp(260px,24vw + 60px,372px);scroll-snap-align:start;background:#fff;border-radius:24px;padding:16px 16px 24px;display:flex;flex-direction:column;gap:12px;color:var(--black)}
+#teachers .tch__card{flex:0 0 calc((100% - 32px) / 3);scroll-snap-align:start;background:#fff;border-radius:24px;padding:16px 16px 24px;display:flex;flex-direction:column;gap:12px;color:var(--black)}
 #teachers .tch__ph{position:relative;display:block;width:100%;aspect-ratio:1;overflow:hidden;border-radius:16px;background:#d9d9d9}
 #teachers .tch__photo{position:absolute;display:block;max-width:none;width:calc(100% * var(--s));height:calc(100% * var(--s) * var(--ar) + 1px);left:calc(50% - var(--ex) * 100% * var(--s));top:min(0px,calc(40% - var(--ey) * 100% * var(--s) * var(--ar)));filter:grayscale(1) contrast(1.04)}
 #teachers .tch__mods{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
@@ -285,7 +284,7 @@ html,body{overflow-x:clip}
 
 /* ---- stat band ---- */
 #stats{background:var(--blue);color:#fff;font-family:var(--font);padding:clamp(28px,2rem + 1vw,44px) 0;margin:0}
-#stats .shell{max-width:1200px;margin-inline:auto}
+#stats .shell{max-width:var(--page-max);margin-inline:auto}
 #stats .stats__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 #stats li{display:flex;flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:0 12px}
 #stats b{font-weight:800;font-style:italic;font-size:clamp(2.4rem,1.4rem + 3vw,4.4rem);line-height:1;letter-spacing:-.03em}
@@ -303,18 +302,7 @@ html,body{overflow-x:clip}
 #demo-day .demo__steps h3{margin:0;font-size:1.05rem;line-height:1.3;font-weight:600}
 @media (max-width:640px){#demo-day .demo__steps{grid-template-columns:1fr}#demo-day .demo__steps li{min-height:150px;padding-top:56px}}
 
-/* ---- audience jigsaw: one piece at a time, huge in the middle, then the next ---- */
-.pz__piece{transform-box:fill-box;transform-origin:center;animation:pzSolo 12s ease-in-out infinite both;transition:filter .25s}
-.pz__piece.is-lit{filter:brightness(1.08) drop-shadow(0 6px 10px rgba(0,0,0,.35))}
-.pz__piece{cursor:default}
-@keyframes pzSolo{
-  0%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(1.3)}
-  4%{opacity:1;transform:translate(var(--cx),var(--cy)) scale(1.95)}
-  21%{opacity:1;transform:translate(var(--cx),var(--cy)) scale(2.05)}
-  25%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(1.6)}
-  100%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(1.6)}
-}
-@media (prefers-reduced-motion:reduce){.pz__piece{animation:none;transform:none;opacity:1}}
+
 
 /* ---- hero illustration ---- */
 #hero .hero__art{position:relative;justify-self:center;width:min(100%,540px);--px:0px;--py:0px}
@@ -330,7 +318,7 @@ html,body{overflow-x:clip}
 @media (prefers-reduced-motion:reduce){#hero .hero__team{animation:none}#hero .fx__b{animation:none;opacity:1}}
 
 /* ---- hero: The Idea Factory ---- */
-#hero .hero__factory{width:100%;min-width:0;align-self:stretch;display:flex;justify-content:center;align-items:center}
+#hero .hero__factory{width:100%;min-width:0;align-self:stretch;display:flex;justify-content:flex-end;align-items:center}
 #hero .hero__factory .if-root{height:100%;width:auto;max-width:100%;aspect-ratio:1/1}
 #hero .hero__factory .if-stage{height:100%;overflow:hidden}
 #hero .hero__factory .if-stage svg{overflow:hidden}
@@ -344,7 +332,7 @@ html,body{overflow-x:clip}
 
 
 /* ---- FAQ: the AIQB-local style, title beside a ruled list with a vertical answer line ---- */
-#faq .faq__inner{max-width:1200px;margin-inline:auto}
+#faq .faq__inner{max-width:var(--page-max);margin-inline:auto}
 #faq .faq__main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px 48px;align-items:start}
 #faq .faq__main h2{font-size:clamp(1.9rem,1rem + 2vw,2.6rem);text-wrap:balance}
 #faq .faq__list{display:flex;flex-direction:column;width:100%}
@@ -359,3 +347,18 @@ html,body{overflow-x:clip}
 #faq .faq__a{margin:0 0 24px;padding:2px 0 2px 16px;border-left:2px solid var(--grey);max-width:560px;font-size:1rem;line-height:1.5;font-weight:400;color:#444}
 #faq .faq__a p{margin:0}
 @media (max-width:1000px){#faq .faq__main{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- audience: four brand bubble cards ---- */
+#audience .aud__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+#audience .aud__cards li{position:relative;background:#fff;color:var(--black);border-radius:24px;padding:clamp(20px,1.8vw,28px);padding-top:72px;min-height:230px;display:flex;flex-direction:column;gap:8px}
+#audience .aud__cards li.is-shaped{border-radius:0}
+#audience .aud__cards li:nth-child(1){background:#FFCA53}#audience .aud__cards li:nth-child(2){background:#A2D4FF}#audience .aud__cards li:nth-child(3){background:#FFB0E8}#audience .aud__cards li.aud__ai{background:var(--orange);color:#fff}
+#audience .aud__cards h3{margin:0;font-size:clamp(1.15rem,1rem + .5vw,1.4rem);line-height:1.2;font-weight:700;letter-spacing:-.01em}
+#audience .aud__cards li.aud__ai h3{font-size:clamp(1.8rem,1.4rem + 1vw,2.4rem);font-weight:800;font-style:italic}
+#audience .aud__cards p{margin:0;font-size:1rem;line-height:1.4;font-weight:400}
+#audience .aud__logos{display:flex;gap:8px;margin-top:4px}
+#audience .aud__logos img{width:36px;height:36px;padding:7px;background:#fff;border-radius:50%;object-fit:contain}
+@media (max-width:1000px){#audience .aud__cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){#audience .aud__cards{grid-template-columns:1fr}#audience .aud__cards li{min-height:0;padding-top:64px}}
+@media (max-width:1000px){#teachers .tch__card{flex-basis:calc((100% - 16px) / 2)}}
+@media (max-width:640px){#teachers .tch__card{flex-basis:86%}}
