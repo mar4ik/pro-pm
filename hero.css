@@ -16,6 +16,9 @@
   --r-card:12px; --r-pill:999px;
 }
 html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.pm-page main>section[id],.pm-page section[id]{scroll-margin-top:var(--t-nav-h,80px)}
 .pm-page{--page-max:1240px}
 @media (min-width:1181px){.pm-page{--page-gutter:100px}}
 #hero{background:var(--black);color:#fff;font-family:var(--font)}
