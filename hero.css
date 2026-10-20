@@ -98,16 +98,16 @@ html,body{overflow-x:clip}
 @media (max-width:640px){#hero .hero__actions .btn{width:100%}}
 
 /* ===== Audience section ===== */
-#audience{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0}
+#audience{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(32px,2rem + 1vw,48px) 0}
 #audience .aud__head{display:grid;grid-template-columns:minmax(0,1fr) auto;margin-bottom:0 !important;grid-template-areas:"title mascot" "lead mascot";column-gap:clamp(24px,4vw,64px);row-gap:20px;align-items:center;margin-bottom:clamp(28px,3vw,44px)}
 #audience .aud__head h2{grid-area:title;align-self:end}
 #audience .aud__lead{grid-area:lead;align-self:start}
-#audience .aud__kal{grid-area:mascot;justify-self:end;width:clamp(320px,34vw + 80px,620px)}
+#audience .aud__kal{grid-area:mascot;justify-self:end;width:clamp(260px,20vw + 60px,400px)}
 #audience .kal{display:block;width:100%;height:auto}
 #audience h2{margin:0;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:#444;max-width:46ch}
 #audience .aud__lead p{margin:0}
-@media (max-width:1000px){#audience .aud__head{grid-template-columns:1fr;grid-template-areas:"title" "lead" "mascot";row-gap:16px}#audience .aud__kal{justify-self:center;width:min(88vw,460px);margin-top:12px}}
+@media (max-width:1000px){#audience .aud__head{grid-template-columns:1fr;grid-template-areas:"title" "lead" "mascot";row-gap:16px}#audience .aud__kal{justify-self:center;width:min(70vw,340px);margin-top:8px}}
 
 /* ===== Outcomes section (brand Blue) ===== */
 /* the rolling eyes logo (outcomes + programme): rolls across its column with real wheel rotation */
