@@ -352,71 +352,42 @@
 
 <script>
   (function(){
+    // Project board: three columns (plan → in progress → done); bubble-shaped task cards flow left to right,
+    // a progress bar fills in the middle column and a check lands in the last one. Pure CSS keyframes.
     var NS='http://www.w3.org/2000/svg';
-    var C={w:'#ffffff',y:'#ffe45c',o:'#FF5E16',k:'#1E1E21',b:'#1E66EE',g:'#F5F5F5'};
-    // patterns: shapes inside one 60° wedge (x along the radius 0..170, y 0..85), mirrored 12× — c: circle, r: rounded rect, t: triangle
-    var SETS={
-      audience:{disc:C.k, patterns:[
-        [['c',110,30,26,C.y],['c',58,14,14,C.w],['r',140,62,34,14,C.o],['c',150,20,8,C.w],['t',84,52,22,C.w]],
-        [['r',72,22,56,18,C.y],['c',132,54,18,C.w],['c',40,36,10,C.o],['t',120,14,26,C.y],['c',160,70,12,C.w]],
-        [['t',60,30,34,C.w],['c',112,66,16,C.y],['r',124,8,40,12,C.w],['c',152,44,14,C.o],['c',30,10,8,C.y]],
-        [['c',90,46,30,C.w],['c',90,46,14,C.k],['r',140,18,26,26,C.y],['t',44,24,20,C.o],['c',158,66,10,C.y]],
-        [['r',50,40,70,10,C.w],['c',118,22,20,C.o],['c',118,22,9,C.k],['t',156,60,24,C.y],['c',76,70,12,C.y]]
-      ]},
-      demo:{disc:C.o, patterns:[
-        [['c',108,30,28,C.k],['c',108,30,12,C.y],['r',150,64,32,12,C.w],['c',52,14,12,C.w],['t',72,58,22,C.k]],
-        [['r',76,22,58,16,C.w],['c',136,54,20,C.k],['c',136,54,9,C.y],['t',42,40,24,C.k],['c',160,20,10,C.w]],
-        [['t',94,34,36,C.w],['c',94,34,11,C.k],['r',146,12,36,12,C.k],['c',34,10,10,C.y],['c',152,68,14,C.k]],
-        [['c',118,46,30,C.k],['c',118,46,14,C.w],['r',50,30,40,40,C.w],['t',160,74,22,C.k],['c',86,76,8,C.y]],
-        [['r',112,18,24,24,C.y],['c',60,46,22,C.w],['c',60,46,9,C.k],['t',150,46,28,C.k],['c',132,78,10,C.w]]
-      ]},
-      contact:{disc:C.b, patterns:[
-        [['c',112,30,24,C.w],['c',112,30,10,C.b],['r',148,62,30,12,C.y],['c',54,16,14,C.k],['t',76,58,22,C.w]],
-        [['r',78,22,56,16,C.w],['c',136,56,20,C.k],['c',136,56,8,C.w],['t',44,40,24,C.y],['c',162,20,10,C.w]],
-        [['t',92,34,36,C.k],['c',92,34,10,C.w],['r',146,12,36,12,C.w],['c',36,10,10,C.y],['c',152,68,14,C.w]],
-        [['c',118,46,30,C.w],['c',118,46,16,C.b],['r',52,30,40,40,C.k],['t',160,74,22,C.y],['c',86,76,8,C.w]],
-        [['r',110,18,24,24,C.y],['c',62,46,22,C.w],['c',62,46,9,C.b],['t',150,46,28,C.k],['c',132,78,10,C.w]]
-      ]},
-      method:{disc:C.g, patterns:[
-        [['c',104,28,28,C.k],['c',104,28,12,C.w],['r',150,60,30,12,C.o],['c',50,16,12,C.b],['t',70,60,20,C.k]],
-        [['r',80,24,60,16,C.k],['c',138,56,18,C.w],['c',138,56,8,C.o],['t',44,40,24,C.b],['c',162,20,10,C.k]],
-        [['t',96,34,38,C.k],['c',96,34,10,C.w],['r',148,12,36,12,C.b],['c',36,10,10,C.o],['c',152,68,14,C.w]],
-        [['c',120,46,30,C.w],['c',120,46,16,C.k],['r',52,30,40,40,C.k],['t',160,74,22,C.o],['c',88,76,8,C.b]],
-        [['r',110,18,24,24,C.b],['c',62,46,22,C.k],['c',62,46,9,C.w],['t',150,46,28,C.k],['c',132,78,10,C.o]]
-      ]}
+    var T={
+      audience:{line:'rgba(255,255,255,.22)',label:'rgba(255,255,255,.72)',cards:['#FFCA53','#A2D4FF','#FFB0E8'],ink:'#1E1E21',bar:'#FF5E16',check:'#00C4B1',ghost:'rgba(255,255,255,.10)'},
+      method:  {line:'rgba(30,30,33,.16)',  label:'rgba(30,30,33,.72)',  cards:['#1E66EE','#1E1E21','#FFCA53'],ink:'#FFFFFF',bar:'#FF5E16',check:'#16A34A',ghost:'rgba(30,30,33,.07)'},
+      demo:    {line:'rgba(255,255,255,.32)',label:'rgba(255,255,255,.85)',cards:['#1E1E21','#FFFFFF','#ffe45c'],ink:'#1E1E21',bar:'#1E66EE',check:'#1E1E21',ghost:'rgba(255,255,255,.14)'},
+      contact: {line:'rgba(255,255,255,.28)',label:'rgba(255,255,255,.8)', cards:['#FFFFFF','#FFCA53','#1E1E21'],ink:'#1E66EE',bar:'#FF5E16',check:'#00C4B1',ghost:'rgba(255,255,255,.12)'}
     };
-    var n=0;
-    function mk(d,i){
-      var el,t=d[0];
-      if(t==='c'){el=document.createElementNS(NS,'circle');el.setAttribute('cx',d[1]);el.setAttribute('cy',d[2]);el.setAttribute('r',d[3]);el.setAttribute('fill',d[4]);}
-      else if(t==='r'){el=document.createElementNS(NS,'rect');el.setAttribute('x',d[1]-d[3]/2);el.setAttribute('y',d[2]-d[4]/2);el.setAttribute('width',d[3]);el.setAttribute('height',d[4]);el.setAttribute('rx',Math.min(d[3],d[4])*.3);el.setAttribute('fill',d[5]);el.setAttribute('transform','rotate(20 '+d[1]+' '+d[2]+')');}
-      else {var h=d[3];el=document.createElementNS(NS,'path');el.setAttribute('d','M'+d[1]+' '+(d[2]-h/2)+' L'+(d[1]+h/2)+' '+(d[2]+h/2)+' L'+(d[1]-h/2)+' '+(d[2]+h/2)+' Z');el.setAttribute('fill',d[4]);}
-      el.setAttribute('class','kal-s'); el.style.animationDelay=(-i*0.9)+'s'; return el;
-    }
+    var LABELS=['Պլան','Ընթացք','Արված'], COL=104, W=96;
+    var CARD='M12 0H76a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H30l-11 12 1-12h-8A12 12 0 0 1 0 44V12A12 12 0 0 1 12 0Z';
     function build(mount){
-      var set=SETS[mount.dataset.kal]; if(!set) return; var id='kal'+(n++);
-      var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','kal'); svg.setAttribute('viewBox','-160 -160 320 320');
-      svg.innerHTML='<defs><clipPath id="'+id+'c"><circle r="158"/></clipPath><clipPath id="'+id+'w"><path d="M0 0 L170 0 A170 170 0 0 1 147.2 85 Z"/></clipPath>'+
-        '<g id="'+id+'s" clip-path="url(#'+id+'w)"><g class="kal-pat" opacity="0"></g><g class="kal-pat" opacity="0"></g></g></defs>'+
-        '<g class="kal__spin" clip-path="url(#'+id+'c)"><circle r="158" fill="'+set.disc+'"/>'+
-        [0,60,120,180,240,300].map(function(a){return '<use href="#'+id+'s" transform="rotate('+a+')"/><use href="#'+id+'s" transform="rotate('+(a+60)+') scale(1,-1)"/>';}).join('')+'</g>';
-      mount.appendChild(svg);
-      var pats=svg.querySelectorAll('.kal-pat'), P=set.patterns;
-      function fill(g,k){ while(g.firstChild) g.removeChild(g.firstChild); P[k].forEach(function(d,i){ g.appendChild(mk(d,i)); }); }
-      var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(reduced){ fill(pats[0],0); pats[0].setAttribute('opacity','1'); return; }
-      var LIFE=7.4, PERIOD=5.8, layers=[{g:pats[0],born:null},{g:pats[1],born:null}], next=0, lastStart=-1e9, t0=performance.now()+1200;
-      (function frame(now){
-        var t=(now-t0)/1000;
-        if(t-lastStart>=PERIOD){ var L=layers[next%2]; fill(L.g,next%P.length); L.born=t; next++; lastStart=t; }
-        layers.forEach(function(L){
-          if(L.born===null) return; var age=t-L.born;
-          if(age>LIFE){ L.g.setAttribute('opacity','0'); L.born=null; return; }
-          var k=age/LIFE, sc=0.62+0.98*Math.pow(k,1.15), op=Math.min(1,age/0.9)*Math.min(1,(LIFE-age)/1.3);
-          L.g.setAttribute('transform','scale('+sc.toFixed(3)+')'); L.g.setAttribute('opacity',op.toFixed(3));
-        });
-        requestAnimationFrame(frame);
-      })(performance.now());
+      var t=T[mount.dataset.kal]; if(!t) return;
+      var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','kal board'); svg.setAttribute('viewBox','0 0 320 200');
+      var h='';
+      for(var i=0;i<3;i++){
+        var x=4+i*COL;
+        h+='<rect x="'+x+'" y="34" width="'+W+'" height="160" rx="16" fill="none" stroke="'+t.line+'" stroke-width="2" stroke-dasharray="6 6"/>';
+        h+='<text x="'+(x+W/2)+'" y="20" text-anchor="middle" font-family="var(--font)" font-weight="600" font-size="13" fill="'+t.label+'">'+LABELS[i]+'</text>';
+      }
+      // faded history cards in the last column
+      h+='<path d="'+CARD+'" transform="translate(218 118) scale(.82)" fill="'+t.ghost+'"/><path d="'+CARD+'" transform="translate(224 156) scale(.7)" fill="'+t.ghost+'"/>';
+      // three live cards, staggered by a third of the cycle
+      for(var k=0;k<3;k++){
+        var c=t.cards[k], ink=(c==='#FFFFFF'||c==='#ffe45c'||c==='#FFCA53'||c==='#A2D4FF'||c==='#FFB0E8')?'#1E1E21':'#FFFFFF';
+        var dy=k*0; // same row; cards move through columns, not slots
+        h+='<g class="board__card" style="animation-delay:'+(-k*4)+'s">'+
+             '<path d="'+CARD+'" fill="'+c+'"/>'+
+             '<rect x="12" y="12" width="46" height="6" rx="3" fill="'+ink+'" opacity=".85"/>'+
+             '<rect x="12" y="24" width="30" height="6" rx="3" fill="'+ink+'" opacity=".45"/>'+
+             '<rect x="12" y="38" width="64" height="5" rx="2.5" fill="'+ink+'" opacity=".16"/>'+
+             '<rect class="board__bar" x="12" y="38" width="64" height="5" rx="2.5" fill="'+t.bar+'" style="animation-delay:'+(-k*4)+'s"/>'+
+             '<g class="board__check" style="animation-delay:'+(-k*4)+'s"><circle cx="74" cy="15" r="9" fill="'+t.check+'"/><path d="M69.5 15.2l3 3 6-6.4" fill="none" stroke="'+(t.check==='#1E1E21'?'#FFFFFF':'#1E1E21')+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>'+
+           '</g>';
+      }
+      svg.innerHTML=h; mount.appendChild(svg);
     }
     [].slice.call(document.querySelectorAll('.kal-mount')).forEach(build);
   })();

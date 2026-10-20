@@ -99,11 +99,6 @@ html,body{overflow-x:clip}
 #audience .aud__lead{grid-area:lead;align-self:start}
 #audience .aud__kal{grid-area:mascot;justify-self:end;width:clamp(300px,22vw + 80px,460px)}
 #audience .kal{display:block;width:100%;height:auto}
-#audience .kal__spin{transform-box:fill-box;transform-origin:center;animation:kalSpin 48s linear infinite}
-#audience .kal-s{transform-box:fill-box;transform-origin:center;animation:kalDrift 5.5s ease-in-out infinite alternate}
-@keyframes kalSpin{to{transform:rotate(360deg)}}
-@keyframes kalDrift{0%{transform:translate(0,0) rotate(0deg) scale(1)}100%{transform:translate(10px,-6px) rotate(25deg) scale(1.12)}}
-@media (prefers-reduced-motion:reduce){#audience .kal__spin,#audience .kal-s{animation:none}}
 #audience h2{margin:0;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:var(--grey);max-width:46ch}
 #audience .aud__lead p{margin:0}
@@ -140,10 +135,7 @@ html,body{overflow-x:clip}
 #format .how__n{font-weight:800;font-style:italic;font-size:1.6em;line-height:1;margin-top:.07em;letter-spacing:-.03em;color:var(--black)}
 #format .how__kal{justify-self:end;width:clamp(280px,20vw + 80px,440px)}
 #format .kal{display:block;width:100%;height:auto}
-#format .kal__spin{transform-box:fill-box;transform-origin:center;animation:kalSpin 56s linear infinite reverse}
-#format .kal-s{transform-box:fill-box;transform-origin:center;animation:kalDrift 5.5s ease-in-out infinite alternate}
 @media (max-width:1000px){#format .how__grid{grid-template-columns:1fr}#format .how__kal{justify-self:center;width:min(70vw,360px);order:-1}}
-@media (prefers-reduced-motion:reduce){#format .kal__spin,#format .kal-s{animation:none}}
 
 /* the eyes logo, inline so the eyes can blink */
 
@@ -181,8 +173,6 @@ html,body{overflow-x:clip}
 #demo-day .demo__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,96px);align-items:center}
 #demo-day .demo__kal{justify-self:start;width:clamp(280px,22vw + 80px,460px)}
 #demo-day .kal{display:block;width:100%;height:auto}
-#demo-day .kal__spin{transform-box:fill-box;transform-origin:center;animation:kalSpin 52s linear infinite}
-#demo-day .kal-s{transform-box:fill-box;transform-origin:center;animation:kalDrift 5.5s ease-in-out infinite alternate}
 #demo-day .demo__label{margin:0 0 10px;font-weight:600;font-style:normal;font-size:clamp(1.25rem,1rem + .9vw,1.75rem);line-height:1.2;letter-spacing:-.01em}
 #demo-day h2{margin:0 0 18px;font-weight:800;font-style:italic;font-size:clamp(2.2rem,1.2rem + 3.2vw,4.2rem);line-height:1.02;letter-spacing:-.024em;max-width:14ch}
 #demo-day .demo__lead{margin:0 0 24px;font-size:clamp(1.05rem,1rem + .4vw,1.3rem);line-height:1.4;font-weight:400;max-width:46ch}
@@ -193,7 +183,6 @@ html,body{overflow-x:clip}
 #demo-day .demo__cta{background:var(--black);color:#fff;border-radius:var(--r-pill);padding:.9em 1.6em;border:1.5px solid transparent;font-size:1rem;line-height:1;font-weight:600;text-decoration:none;display:inline-flex;align-items:center}
 #demo-day .demo__cta:hover{background:#000}
 @media (max-width:1000px){#demo-day .demo__grid{grid-template-columns:1fr}#demo-day .demo__kal{justify-self:center;width:min(70vw,360px)}}
-@media (prefers-reduced-motion:reduce){#demo-day .kal__spin,#demo-day .kal-s{animation:none}}
 
 /* scroll to top */
 .totop{position:fixed;right:20px;bottom:20px;z-index:60;width:48px;height:48px;border-radius:50%;background:var(--black);color:#fff;border:1.5px solid rgba(255,255,255,.35);display:grid;place-items:center;padding:0;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s,background .2s}
@@ -271,10 +260,7 @@ html,body{overflow-x:clip}
 #contact .con__grid{display:grid;grid-template-columns:minmax(0,820px) minmax(240px,1fr);gap:clamp(24px,4vw,64px);align-items:center}
 #contact .con__kal{justify-self:end;width:clamp(240px,16vw + 80px,360px)}
 #contact .kal{display:block;width:100%;height:auto}
-#contact .kal__spin{transform-box:fill-box;transform-origin:center;animation:kalSpin 50s linear infinite}
-#contact .kal-s{transform-box:fill-box;transform-origin:center;animation:kalDrift 5.5s ease-in-out infinite alternate}
 @media (max-width:1000px){#contact .con__grid{grid-template-columns:1fr}#contact .con__kal{display:none}}
-@media (prefers-reduced-motion:reduce){#contact .kal__spin,#contact .kal-s{animation:none}}
 #contact .con__logo{display:block;height:30px;max-width:none;margin-bottom:14px;object-fit:contain}
 #contact .con__logo--aiqb{width:auto;height:22px}
 #contact .con__logo--mam{width:62px}
@@ -306,3 +292,22 @@ html,body{overflow-x:clip}
 #teachers .tch__card h3{margin:4px 0 0;font-size:clamp(1.15rem,1rem + .5vw,1.5rem);line-height:1.2;font-weight:600;letter-spacing:-.01em}
 #teachers .tch__card p{margin:0;font-size:1rem;line-height:1.45;font-weight:300;color:#3a3a3d}
 @media (max-width:760px){#teachers .tch__head{flex-direction:column;align-items:flex-start}#teachers .tch__nav{display:none}#teachers .tch__card{flex-basis:min(78vw,320px)}}
+
+/* ---- project board animation (replaces the kaleidoscope) ---- */
+.board__card{transform:translate(8px,48px);animation:boardFlow 12s cubic-bezier(.45,0,.2,1) infinite}
+.board__bar{transform-box:fill-box;transform-origin:left center;transform:scaleX(0);animation:boardBar 12s linear infinite}
+.board__check{opacity:0;transform-box:fill-box;transform-origin:center;animation:boardCheck 12s ease-out infinite}
+@keyframes boardFlow{
+  0%{transform:translate(8px,64px);opacity:0}
+  4%{transform:translate(8px,48px);opacity:1}
+  30%{transform:translate(8px,48px)}
+  36%{transform:translate(112px,48px)}
+  63%{transform:translate(112px,48px)}
+  69%{transform:translate(216px,48px)}
+  94%{transform:translate(216px,48px);opacity:1}
+  98%{transform:translate(216px,34px);opacity:0}
+  100%{transform:translate(8px,64px);opacity:0}
+}
+@keyframes boardBar{0%,36%{transform:scaleX(0)}62%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+@keyframes boardCheck{0%,68%{opacity:0;transform:scale(.4)}74%{opacity:1;transform:scale(1.15)}78%{transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.board__card,.board__bar,.board__check{animation:none}.board__card:nth-of-type(1){transform:translate(8px,48px)}.board__card:nth-of-type(2){transform:translate(112px,48px)}.board__card:nth-of-type(3){transform:translate(216px,48px)}.board__card:nth-of-type(3) .board__check{opacity:1}.board__card:nth-of-type(2) .board__bar{transform:scaleX(.6)}.board__card:nth-of-type(3) .board__bar{transform:scaleX(1)}}
