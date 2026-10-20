@@ -11,11 +11,12 @@ export interface FactoryTimelines {
 export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   const q = gsap.utils.selector(svg);
   const BULB = 4.2;
-  const ring = [[-175, -120], [175, -130], [-195, 60], [195, 50], [0, -215]];
+  const spots = [[-130, -120], [0, 0], [130, 120]];
 
   const reset = () => {
     gsap.set(q('#bulb'), { x: 300, y: -260, scale: BULB, opacity: 1, transformOrigin: '50% 100%' });
     gsap.set(q('.idea'), { x: 300, y: 340, scale: 0, opacity: 1, transformOrigin: '50% 50%' });
+    gsap.set(q('.idea__label, .idea__check'), { opacity: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#ev-stage'), { scaleY: 0, scaleX: 0.6, opacity: 1, transformOrigin: '50% 100%' });
     gsap.set(q('.ev-chair'), { x: -140, opacity: 0 });
     gsap.set(q('#ev-curtain-l'), { scaleX: 1, transformOrigin: '0% 0%' });
@@ -36,16 +37,19 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
     .to(q('#bulb'), { y: 470, duration: 1.3, ease: 'bounce.out' }, 0.2)
     .to(q('#bulb'), { scaleY: BULB * 0.84, scaleX: BULB * 1.1, duration: 0.1, ease: 'power1.out' }, 0.95)
     .to(q('#bulb'), { scaleY: BULB, scaleX: BULB, duration: 0.35, ease: 'elastic.out(1,0.5)' }, 1.05)
-    .to(q('#bulb-glow'), { scale: 1.7, duration: 0.35, yoyo: true, repeat: 3, transformOrigin: '50% 50%' }, 1.6)
+    .to(q('#bulb-glow'), { scale: 1.22, duration: 0.35, yoyo: true, repeat: 3, transformOrigin: '50% 50%' }, 1.6)
     .to(q('#bulb'), { scale: 0, y: 340, duration: 0.4, ease: 'power3.in' }, 2.8);
 
-  // 2 — it bursts into idea bubbles that float, then gather again
+  // 2 — it becomes three chat boxes: plan, in progress, done
   tl.addLabel('ideas', LABELS.ideas);
-  ring.forEach(([dx, dy], i) => {
-    tl.to(q(`#idea-${i + 1}`), { scale: 1, x: 300 + dx, y: 340 + dy, duration: 0.8, ease: 'back.out(1.8)' }, 3.0 + i * 0.12)
-      .to(q(`#idea-${i + 1}`), { y: `+=${i % 2 ? 10 : -10}`, duration: 1.1, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 4.2 + i * 0.1)
-      .to(q(`#idea-${i + 1}`), { x: 300, y: 400, scale: 0.15, opacity: 0, duration: 0.6, ease: 'power3.in' }, 6.6 + i * 0.07);
+  spots.forEach(([dx, dy], i) => {
+    const at = 3.0 + i * 0.55;
+    tl.to(q(`#idea-${i + 1}`), { scale: 1, x: 300 + dx, y: 340 + dy, duration: 0.7, ease: 'back.out(1.8)' }, at)
+      .to(q(`#idea-${i + 1} .idea__label`), { opacity: 1, duration: 0.35 }, at + 0.4)
+      .to(q(`#idea-${i + 1}`), { y: `+=${i % 2 ? 10 : -10}`, duration: 1.1, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 4.8 + i * 0.1)
+      .to(q(`#idea-${i + 1}`), { x: 300, y: 400, scale: 0.15, opacity: 0, duration: 0.6, ease: 'power3.in' }, 6.7 + i * 0.07);
   });
+  tl.fromTo(q('#idea-3 .idea__check'), { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(3)' }, 4.9);
 
   // 3 — the gathered ideas become an event
   tl.addLabel('event', LABELS.event)

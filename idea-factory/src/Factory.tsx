@@ -8,19 +8,25 @@ export const C = {
 
 export const VIEW = { full: '30 30 540 540' };
 
-/** A brand speech bubble, 130×84, origin at its centre, tail bottom-left. */
-function IdeaBubble({ id, fill }: { id: string; fill: string }) {
+/** A brand chat box, 190×112, origin at its centre, tail bottom-left, one word inside. */
+function ChatBox({ id, fill, ink, label, check }: { id: string; fill: string; ink: string; label: string; check?: boolean }) {
   return (
     <g id={id} className="idea">
-      <rect x={-65} y={-42} width={130} height={84} rx={20} fill={fill} />
-      <path d="M-44 40 L-54 62 L-18 40 Z" fill={fill} />
-      <rect x={-40} y={-6} width={72} height={12} rx={6} fill={C.ink} opacity={0.55} />
+      <rect x={-95} y={-56} width={190} height={112} rx={24} fill={fill} />
+      <path d="M-70 54 L-84 84 L-36 54 Z" fill={fill} />
+      <text className="idea__label" x={check ? -12 : 0} y={0} textAnchor="middle" dominantBaseline="central"
+        fontFamily="Adelle Sans ARM, system-ui, sans-serif" fontWeight={700} fontSize={30} fill={ink}>{label}</text>
+      {check && (
+        <g className="idea__check">
+          <circle cx={64} cy={-30} r={16} fill="#16A34A" />
+          <path d="M56 -30 L61.5 -24.5 L72 -36" fill="none" stroke="#fff" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+      )}
     </g>
   );
 }
 
 export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
-  const ideas = [C.amber, C.coral, C.teal, C.sky, C.orange];
   return (
     <svg ref={ref} id="factory-svg" viewBox={VIEW.full} xmlns="http://www.w3.org/2000/svg" role="img"
       aria-label="An idea turns into idea bubbles, then an event, then a product">
@@ -51,9 +57,11 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
         <circle cx={-7} cy={-41} r={3} fill="#fff" opacity={0.7} />
       </g>
 
-      {/* ---------- 2. idea bubbles (all start at the centre) ---------- */}
+      {/* ---------- 2. chat boxes: plan, in progress, done ---------- */}
       <g id="ideas">
-        {ideas.map((c, i) => <IdeaBubble key={i} id={`idea-${i + 1}`} fill={c} />)}
+        <ChatBox id="idea-1" fill={C.cream} ink={C.ink} label="Պլան" />
+        <ChatBox id="idea-2" fill={C.amber} ink={C.ink} label="Ընթացք" />
+        <ChatBox id="idea-3" fill={C.navy} ink="#fff" label="Արված" check />
       </g>
 
       {/* ---------- 3. the event stage (bottom centre at 300,470) ---------- */}
