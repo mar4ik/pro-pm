@@ -72,7 +72,8 @@
     }, ms + (delay || 0) + 250);
   }
   var animating = !reduced && 'IntersectionObserver' in window;
-  if (animating) tiles.forEach(function (t) { progress.set(t, 0); });
+  var inLoop = function (t) { return 'bubbleBreathe' in t.dataset; };
+  if (animating) tiles.forEach(function (t) { progress.set(t, inLoop(t) ? depthOf(t) : 0); });
   tiles.forEach(shape);
   if ('ResizeObserver' in window) {
     var ro = new ResizeObserver(function (es) { es.forEach(function (e) { shape(e.target); }); });
@@ -85,11 +86,21 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return; io.unobserve(e.target);
-        (groups.get(e.target) || []).forEach(function (t, i) { cutTo(t, depthOf(t), 650, i * 90); });
+        (groups.get(e.target) || []).forEach(function (t, i) { if (!inLoop(t)) cutTo(t, depthOf(t), 650, i * 90); });
       });
     }, { threshold: 0.35 });
     groups.forEach(function (_, g) { io.observe(g); });
   }
+  // data-bubble-breathe: the cut keeps deepening and easing back (tail, step and slit grow and retract), never jumping
+  tiles.filter(function (t) { return 'bubbleBreathe' in t.dataset; }).forEach(function (t) {
+    if (!animating) return;
+    var base = depthOf(t), t0 = performance.now() + 1500;
+    (function frame(now) {
+      var k = Math.max(0, now - t0) / 1000;
+      progress.set(t, base * (0.72 + 0.28 * Math.sin(k * 0.9)));   // 0.95 … 1.3 … 0.57 of the brand depth
+      shape(t); requestAnimationFrame(frame);
+    })(performance.now());
+  });
   tiles.forEach(function (t) {   // hover: the cut goes a little deeper, as on the brand site (unless data-bubble-static)
     if ('bubbleStatic' in t.dataset) return;
     t.addEventListener('mouseenter', function () { if (animating) cutTo(t, depthOf(t) * 1.3, 320); });

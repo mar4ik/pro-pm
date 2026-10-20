@@ -244,26 +244,24 @@ html,body{overflow-x:clip}
 #contact h2{margin:0 0 14px;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #contact .con__lead{margin:0 0 clamp(24px,3vw,40px);font-size:clamp(1.05rem,1rem + .4vw,1.25rem);line-height:1.4;font-weight:300;color:rgba(255,255,255,.85);max-width:50ch}
 #contact .con__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-#contact .con__cards li.con__shape{display:flex;align-items:center;justify-content:center;background:transparent;padding:0;min-height:0}
-#contact .con__morph{display:block;width:min(100%,250px);height:auto}
 #contact .con__cards li{position:relative;background:var(--black);border-radius:24px;padding:clamp(22px,2vw,32px);padding-top:76px;display:flex;flex-direction:column;gap:6px;min-height:260px}
 #contact .con__cards li.is-shaped{border-radius:0}
 #contact .con__cards h3{margin:0 0 4px;font-size:clamp(1.15rem,1rem + .5vw,1.5rem);line-height:1.2;font-weight:600;letter-spacing:-.01em}
 #contact .con__cards a{display:flex;align-items:center;gap:.45em;color:#fff;text-decoration:none;font-size:clamp(1.3rem,1rem + .8vw,1.75rem);font-weight:700;line-height:1.25;letter-spacing:-.01em}
 #contact .con__cards a:hover{color:#ffe45c}
 #contact .con__ico{flex:none;width:.9em;height:.9em;fill:currentColor}
-@media (max-width:760px){#contact .con__cards{grid-template-columns:1fr}#contact .con__cards li{min-height:260px}#contact .con__cards li.con__shape{padding:12px 0}}
+@media (max-width:760px){#contact .con__cards{grid-template-columns:1fr}#contact .con__cards li{min-height:260px}}
 
 /* main navigation tweaks over the page's own nav styles */
 .pm-page .tnav__link:hover{text-decoration:none;opacity:.8}
 @media (max-width:1000px){.pm-page .tnav__links{border-bottom:0}.pm-page .tnav__link{border-bottom:0}}
 #faq .faq__grid{display:grid;grid-template-columns:minmax(0,820px);gap:clamp(24px,4vw,64px);align-items:start}
 @media (max-width:1000px){#faq .faq__grid{grid-template-columns:1fr}#faq .faq__side{display:none}}
-#contact .con__grid{display:grid;grid-template-columns:minmax(0,820px);gap:clamp(24px,4vw,64px);align-items:center}
+#contact .con__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
 @media (max-width:1000px){#contact .con__grid{grid-template-columns:1fr}}
-#contact .con__logo{display:block;height:30px;max-width:none;margin-bottom:14px;object-fit:contain}
-#contact .con__logo--aiqb{width:auto;height:22px}
-#contact .con__logo--mam{width:62px}
+#contact .con__logo{display:block;width:auto;max-width:none;margin:0 0 18px calc(1.35 * clamp(1.3rem,1rem + .8vw,1.75rem));object-fit:contain}
+#contact .con__logo--aiqb{height:32px}
+#contact .con__logo--mam{height:44px}
 
 /* the nav's lockup mask lives in images/ now (the page css points at /imgs/) */
 .pm-page .lockup .lockup__mark{-webkit-mask-image:url(images/pm/lockup-light.svg);mask-image:url(images/pm/lockup-light.svg)}
@@ -367,3 +365,5 @@ html,body{overflow-x:clip}
 #hero .hero__factory .if-stage svg{overflow:hidden}
 #hero .hero__factory .if-stage svg{width:100%;height:100%}
 @media (max-width:1000px){#hero .hero__factory{order:1;align-self:auto}#hero .hero__factory .if-root{height:auto;width:100%}#hero .hero__factory .if-stage{height:auto}#hero .hero__factory .if-stage svg{height:auto}}
+
+#hero .lead p{margin-left:0;margin-right:0}
