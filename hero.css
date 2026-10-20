@@ -112,10 +112,6 @@ html,body{overflow-x:clip}
 /* ===== Outcomes section (brand Blue) ===== */
 #outcomes{background:var(--blue);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0}
 #outcomes h2{margin:0;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.1vw,2.75rem);line-height:1.02;letter-spacing:-.024em;max-width:22ch}
-#outcomes .outc__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;column-gap:clamp(32px,4vw,72px);row-gap:0}
-#outcomes .outc__list li{display:grid;grid-template-columns:3.2rem 1fr;gap:12px;align-items:start;padding:14px 0;font-size:clamp(1.05rem,1rem + .35vw,1.3rem);line-height:1.35;font-weight:600}
-#outcomes .outc__n{font-weight:800;font-style:italic;font-size:1.6em;line-height:1;margin-top:.07em;letter-spacing:-.03em;color:#fff}
-@media (max-width:1000px){#outcomes .outc__list{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}}
 #outcomes .outc__head{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(24px,3vw,40px)}
 #outcomes .outc__head h2{margin:0}
 /* the rolling eyes logo (outcomes + programme): rolls across its column with real wheel rotation */
@@ -370,3 +366,13 @@ html,body{overflow-x:clip}
 #hero .h1-top{display:block;white-space:nowrap}
 #hero .lead{max-width:none}
 @media (min-width:1001px){#hero .lead__nw{white-space:nowrap}}
+
+/* ---- outcomes: puzzle tiles ---- */
+#outcomes .outc__list{list-style:none;margin:0;padding:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+#outcomes .outc__list li{position:relative;margin:-18px;display:flex;align-items:center;min-height:220px;padding:40px 44px;background:var(--pz,#F5F5F5);color:var(--black);font-size:clamp(1rem,.95rem + .25vw,1.15rem);line-height:1.35;font-weight:600}
+#outcomes .outc__list li:nth-child(8n+1),#outcomes .outc__list li:nth-child(8n+6){--pz:#FFCA53}
+#outcomes .outc__list li:nth-child(8n+2),#outcomes .outc__list li:nth-child(8n+7){--pz:#F5F5F5}
+#outcomes .outc__list li:nth-child(8n+3),#outcomes .outc__list li:nth-child(8n+8){--pz:#FFB0E8}
+#outcomes .outc__list li:nth-child(8n+4),#outcomes .outc__list li:nth-child(8n+5){--pz:#A2D4FF}
+@media (max-width:1000px){#outcomes .outc__list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){#outcomes .outc__list{grid-template-columns:1fr}#outcomes .outc__list li{min-height:0;padding:34px 36px}}

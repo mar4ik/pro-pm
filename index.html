@@ -34,15 +34,15 @@
       <h2>8 դասից հետո մասնակիցը կարողանում է՝</h2>
       <div class="outc__ball roll-ball" aria-hidden="true"></div>
     </div>
-    <ol class="outc__list">
-      <li><span class="outc__n">01</span><span>տեսնել PM-ի նոր դերը և AI-ի սահմանները,</span></li>
-      <li><span class="outc__n">02</span><span>կառուցել նախագիծը հասկացող AI միջավայր,</span></li>
-      <li><span class="outc__n">03</span><span>ուսումնասիրել խնդիրը և որոշել ապացույցներով,</span></li>
-      <li><span class="outc__n">04</span><span>վարել փոփոխվող նախագծային փաստաթղթեր,</span></li>
-      <li><span class="outc__n">05</span><span>տվյալներից ու ռիսկերից տեսնել իրական վիճակը,</span></li>
-      <li><span class="outc__n">06</span><span>ավտոմատացնել կրկնվողը և կառուցել AI գործակալ,</span></li>
-      <li><span class="outc__n">07</span><span>առաջնորդել թիմը՝ առանց պաշտոնական իշխանության,</span></li>
-      <li><span class="outc__n">08</span><span>ներկայացնել նախագիծը հստակ ու համոզիչ։</span></li>
+    <ol class="outc__list" data-puzzle>
+      <li><span>տեսնել PM-ի նոր դերը և AI-ի սահմանները,</span></li>
+      <li><span>կառուցել նախագիծը հասկացող AI միջավայր,</span></li>
+      <li><span>ուսումնասիրել խնդիրը և որոշել ապացույցներով,</span></li>
+      <li><span>վարել փոփոխվող նախագծային փաստաթղթեր,</span></li>
+      <li><span>տվյալներից ու ռիսկերից տեսնել իրական վիճակը,</span></li>
+      <li><span>ավտոմատացնել կրկնվողը և կառուցել AI գործակալ,</span></li>
+      <li><span>առաջնորդել թիմը՝ առանց պաշտոնական իշխանության,</span></li>
+      <li><span>ներկայացնել նախագիծը հստակ ու համոզիչ։</span></li>
     </ol>
   </div>
 </section>
@@ -232,6 +232,27 @@
 })();
 </script>
 <script type="module" src="factory/factory.js"></script>
+<script>
+(function(){ // outcomes as interlocking puzzle tiles: each tile's clip-path is a jigsaw piece whose knobs cross into its neighbours
+  var list=document.querySelector('#outcomes .outc__list[data-puzzle]'); if(!list||!('clipPath' in document.documentElement.style)) return;
+  var tiles=[].slice.call(list.children), K=18;
+  function piece(W,H,e){ // e=[top,right,bottom,left]: 1 knob out, -1 socket in
+    var x0=K,y0=K,x1=W-K,y1=H-K,d='M'+x0+' '+y0;
+    var edges=[[[x0,y0],[x1,y0],[0,-1]],[[x1,y0],[x1,y1],[1,0]],[[x1,y1],[x0,y1],[0,1]],[[x0,y1],[x0,y0],[-1,0]]];
+    edges.forEach(function(ed,i){ var p0=ed[0],p1=ed[1],n=ed[2],t=e[i];
+      if(!t){ d+=' L'+p1[0]+' '+p1[1]; return; }
+      var dx=p1[0]-p0[0],dy=p1[1]-p0[1],a=[p0[0]+dx*.4,p0[1]+dy*.4],b=[p0[0]+dx*.6,p0[1]+dy*.6],k=K*t*1.05;
+      d+=' L'+a[0]+' '+a[1]+' C'+(a[0]+n[0]*k*1.7)+' '+(a[1]+n[1]*k*1.7)+' '+(b[0]+n[0]*k*1.7)+' '+(b[1]+n[1]*k*1.7)+' '+b[0]+' '+b[1]+' L'+p1[0]+' '+p1[1]; });
+    return d+' Z'; }
+  function layout(){
+    var cols=getComputedStyle(list).gridTemplateColumns.split(' ').length, rows=Math.ceil(tiles.length/cols);
+    tiles.forEach(function(t,i){ var c=i%cols,r=Math.floor(i/cols);
+      var R=((c+r)%2===0)?1:-1, e=[-R,R,-R,R];   // knobs left+right and sockets top+bottom, or the reverse; neighbours always match
+      t._e=e; t.style.clipPath="path('"+piece(t.clientWidth,t.clientHeight,e)+"')"; });
+  }
+  layout(); if('ResizeObserver' in window){ new ResizeObserver(layout).observe(list); } else window.addEventListener('resize',layout);
+})();
+</script>
 <script src="bubble.js"></script>
 
 <script>
