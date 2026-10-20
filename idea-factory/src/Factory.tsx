@@ -55,12 +55,11 @@ function Bulb({ id, scale = 1 }: { id: string; scale?: number }) {
   );
 }
 
-function Card({ x, y, fill, w = 44, h = 28 }: { x: number; y: number; fill: string; w?: number; h?: number }) {
+function Card({ x, y, fill, w = 90, h = 58 }: { x: number; y: number; fill: string; w?: number; h?: number }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx={6} fill={fill} />
-      <rect x={x + 7} y={y + 8} width={w * 0.55} height={4} rx={2} fill={C.ink} opacity={0.75} />
-      <rect x={x + 7} y={y + 16} width={w * 0.35} height={4} rx={2} fill={C.ink} opacity={0.4} />
+      <rect x={x} y={y} width={w} height={h} rx={12} fill={fill} />
+      <rect x={x + 18} y={y + 24} width={w * 0.55} height={10} rx={5} fill={C.ink} opacity={0.6} />
     </g>
   );
 }
@@ -70,7 +69,7 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
   const cardColors = [C.amber, C.coral, C.teal, C.orange, C.sky];
   // cards fan out above the machine, then converge into the plan
   const cardSlots = [
-    { x: 340, y: 210 }, { x: 395, y: 170 }, { x: 452, y: 158 }, { x: 508, y: 176 }, { x: 556, y: 214 },
+    { x: 280, y: 120 }, { x: 368, y: 70 }, { x: 460, y: 50 }, { x: 552, y: 70 }, { x: 640, y: 120 },
   ];
 
   return (
@@ -141,7 +140,7 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
             <circle id="ev-button-glow" cx={624} cy={382} r={30} fill="url(#if-glow)" opacity={0} />
           </g>
         </g>
-        <g id="ev-stage">
+        <g transform="translate(738 468) scale(1.3) translate(-738 -468)"><g id="ev-stage">
           <rect x={660} y={438} width={156} height={30} rx={8} fill={C.grey} />
           <rect x={668} y={290} width={140} height={150} rx={10} fill={C.navy} />
           <rect x={660} y={280} width={156} height={18} rx={6} fill={C.grey} />
@@ -167,7 +166,7 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
               </g>
             ))}
           </g>
-        </g>
+        </g></g>
       </g>
 
       {/* ---------- station 3: the product machine ---------- */}
@@ -203,36 +202,32 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
       <g id="objects">
         <Bulb id="bulb" />
         <g id="plan">
-          <rect x={-30} y={-44} width={60} height={44} rx={8} fill={C.navy} />
-          <rect x={-22} y={-52} width={18} height={14} rx={4} fill={C.amber} />
-          <rect x={-2} y={-52} width={18} height={14} rx={4} fill={C.coral} />
-          <rect x={-20} y={-30} width={40} height={5} rx={2.5} fill="#fff" opacity={0.85} />
-          <rect x={-20} y={-20} width={26} height={5} rx={2.5} fill="#fff" opacity={0.5} />
+          <rect x={-60} y={-90} width={120} height={90} rx={14} fill={C.navy} />
+          <rect x={-44} y={-104} width={36} height={22} rx={7} fill={C.amber} />
+          <rect x={-4} y={-104} width={36} height={22} rx={7} fill={C.coral} />
+          <rect x={-40} y={-56} width={80} height={10} rx={5} fill="#fff" opacity={0.85} />
         </g>
         <g id="ticket">
-          <circle id="ticket-glow" cx={0} cy={-20} r={40} fill="url(#if-glow)" opacity={0.7} />
-          <path d="M-36 -40 L36 -40 A6 6 0 0 0 36 -28 L36 -12 A6 6 0 0 0 36 0 L-36 0 A6 6 0 0 0 -36 -12 L-36 -28 A6 6 0 0 0 -36 -40 Z" fill={C.lemon} />
-          <rect x={-26} y={-30} width={30} height={5} rx={2.5} fill={C.ink} />
-          <rect x={-26} y={-20} width={20} height={5} rx={2.5} fill={C.ink} opacity={0.5} />
+          <circle id="ticket-glow" cx={0} cy={-42} r={80} fill="url(#if-glow)" opacity={0.7} />
+          <path d="M-75 -84 L75 -84 A10 10 0 0 0 75 -64 L75 -20 A10 10 0 0 0 75 0 L-75 0 A10 10 0 0 0 -75 -20 L-75 -64 A10 10 0 0 0 -75 -84 Z" fill={C.lemon} />
+          <rect x={-55} y={-58} width={70} height={10} rx={5} fill={C.ink} />
+          <rect x={-55} y={-38} width={44} height={10} rx={5} fill={C.ink} opacity={0.45} />
         </g>
-        <g id="phone" transform="translate(-40 0)">
-          <circle id="phone-glow" cx={931} cy={236} r={110} fill="url(#if-glow)" opacity={0} />
-          <rect x={886} y={154} width={90} height={164} rx={18} fill={C.navy} />
-          <rect x={893} y={162} width={76} height={148} rx={12} fill="url(#if-screen)" />
-          <rect id="ui-nav" x={899} y={168} width={64} height={12} rx={6} fill={C.navy} />
-          <rect id="ui-card-1" x={899} y={188} width={64} height={28} rx={6} fill={C.amber} />
-          <rect id="ui-card-2" x={899} y={222} width={30} height={30} rx={6} fill={C.coral} />
-          <rect id="ui-card-3" x={933} y={222} width={30} height={30} rx={6} fill={C.teal} />
-          <rect x={899} y={260} width={64} height={6} rx={3} fill={C.grey} />
-          <rect id="ui-progress" x={899} y={260} width={64} height={6} rx={3} fill={C.navy} />
-          <rect id="ui-btn" x={899} y={276} width={64} height={22} rx={11} fill={C.orange} />
-          <rect x={918} y={285} width={26} height={4} rx={2} fill="#fff" />
+        <g id="phone">
+          <circle id="phone-glow" cx={891} cy={150} r={210} fill="url(#if-glow)" opacity={0} />
+          <rect x={806} y={0} width={170} height={300} rx={32} fill={C.navy} />
+          <rect x={818} y={14} width={146} height={272} rx={22} fill="url(#if-screen)" />
+          <rect id="ui-nav" x={830} y={30} width={122} height={22} rx={11} fill={C.navy} />
+          <rect id="ui-card-1" x={830} y={68} width={122} height={72} rx={14} fill={C.amber} />
+          <rect id="ui-card-2" x={830} y={156} width={56} height={56} rx={14} fill={C.coral} />
+          <rect id="ui-card-3" x={896} y={156} width={56} height={56} rx={14} fill={C.teal} />
+          <rect id="ui-btn" x={830} y={236} width={122} height={36} rx={18} fill={C.orange} />
+          <rect x={868} y={250} width={46} height={8} rx={4} fill="#fff" />
         </g>
-        <g id="pr-feedback" transform="translate(-40 0)">
-          <rect x={984} y={176} width={76} height={44} rx={12} fill={C.coral} />
-          <path d="M992 218 L986 232 L1006 218 Z" fill={C.coral} />
-          <rect x={996} y={188} width={44} height={6} rx={3} fill={C.ink} opacity={0.8} />
-          <rect x={996} y={200} width={28} height={6} rx={3} fill={C.ink} opacity={0.45} />
+        <g id="pr-feedback">
+          <rect x={984} y={70} width={110} height={64} rx={16} fill={C.coral} />
+          <path d="M996 132 L988 152 L1016 132 Z" fill={C.coral} />
+          <rect x={1002} y={96} width={64} height={10} rx={5} fill={C.ink} opacity={0.7} />
         </g>
       </g>
     </svg>

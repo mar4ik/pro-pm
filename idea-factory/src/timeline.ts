@@ -11,7 +11,7 @@ export interface FactoryTimelines {
 /** Builds the 28-second object story (master) plus the never-ending machinery (ambient). No people, no camera. */
 export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   const q = gsap.utils.selector(svg);
-  const BULB = 2.4; // "a big idea"
+  const BULB = 2.6; // "a big idea"
 
   // ---- initial state -------------------------------------------------------------------------
   const reset = () => {
@@ -29,11 +29,10 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
     gsap.set(q('.ev-light'), { rotation: 0, transformOrigin: '50% 0%' });
     gsap.set(q('.ev-person'), { scale: 0, transformOrigin: '50% 100%' });
     gsap.set(q('#ev-button'), { y: 0 });
-    gsap.set(q('#phone'), { x: 0, y: 150, scale: 0.5, opacity: 0, transformOrigin: '50% 50%' });
+    gsap.set(q('#phone'), { x: 0, y: 260, scale: 0.4, opacity: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#ui-nav, #ui-card-1, #ui-card-2, #ui-card-3, #ui-btn'), { scale: 0, x: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#ui-card-2'), { fill: '#FFB0E8' });
     gsap.set(q('#ui-card-3'), { fill: '#00C4B1' });
-    gsap.set(q('#ui-progress'), { scaleX: 0, transformOrigin: '0% 50%' });
     gsap.set(q('#phone-glow'), { opacity: 0, scale: 1, transformOrigin: '50% 50%' });
     gsap.set(q('#pr-feedback'), { scale: 0, opacity: 1, transformOrigin: '10% 100%' });
   };
@@ -67,14 +66,14 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   // Scene 2 — the plan machine (4.6–11.4s): cards burst out, fan, then pack into a plan
   tl.addLabel('pm', LABELS.pm)
     .to(q('#pm-machine'), { x: 2, duration: 0.07, yoyo: true, repeat: 9, ease: 'none' }, 4.8)
-    .fromTo(q('.pm-card'), { y: 120, x: 20 }, { y: 0, x: 0, duration: 0.7, ease: 'power3.out', stagger: 0.22 }, 5.3)
+    .fromTo(q('.pm-card'), { y: 220, x: 30 }, { y: 0, x: 0, duration: 0.8, ease: 'power3.out', stagger: 0.22 }, 5.3)
     .to(q('.pm-card'), { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(1.8)', stagger: 0.22 }, 5.3)
     .to(q('.pm-card'), { y: '+=6', duration: 0.9, ease: 'sine.inOut', yoyo: true, repeat: 1, stagger: 0.1 }, 6.6)
-    .to(q('#pm-card-1'), { x: 186, y: 236, scale: 0.2, opacity: 0, duration: 0.55, ease: 'power3.in' }, 8.2)
-    .to(q('#pm-card-2'), { x: 131, y: 276, scale: 0.2, opacity: 0, duration: 0.55, ease: 'power3.in' }, 8.3)
-    .to(q('#pm-card-3'), { x: 74, y: 288, scale: 0.2, opacity: 0, duration: 0.55, ease: 'power3.in' }, 8.4)
-    .to(q('#pm-card-4'), { x: 18, y: 270, scale: 0.2, opacity: 0, duration: 0.55, ease: 'power3.in' }, 8.5)
-    .to(q('#pm-card-5'), { x: -30, y: 232, scale: 0.2, opacity: 0, duration: 0.55, ease: 'power3.in' }, 8.6)
+    .to(q('#pm-card-1'), { x: 223, y: 291, scale: 0.2, opacity: 0, duration: 0.6, ease: 'power3.in' }, 8.2)
+    .to(q('#pm-card-2'), { x: 135, y: 341, scale: 0.2, opacity: 0, duration: 0.6, ease: 'power3.in' }, 8.3)
+    .to(q('#pm-card-3'), { x: 43, y: 361, scale: 0.2, opacity: 0, duration: 0.6, ease: 'power3.in' }, 8.4)
+    .to(q('#pm-card-4'), { x: -49, y: 341, scale: 0.2, opacity: 0, duration: 0.6, ease: 'power3.in' }, 8.5)
+    .to(q('#pm-card-5'), { x: -137, y: 291, scale: 0.2, opacity: 0, duration: 0.6, ease: 'power3.in' }, 8.6)
     .to(q('#pm-lever'), { rotation: 36, duration: 0.35, ease: 'power3.in' }, 8.9)
     .to(q('#pm-machine'), { y: 3, duration: 0.08, yoyo: true, repeat: 5, ease: 'none' }, 9.2)
     .to(q('#plan'), { scale: 1, duration: 0.5, ease: 'back.out(2.2)' }, 9.3)
@@ -101,13 +100,12 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
 
   // Scene 4 — the product machine (18–24s): ticket goes in, a phone comes out and assembles
   tl.addLabel('product', LABELS.product)
-    .to(q('#ticket'), { y: 312, duration: 0.6, ease: 'power2.inOut' }, 18.7)
+    .to(q('#ticket'), { y: 330, scale: 0.7, duration: 0.6, ease: 'power2.inOut' }, 18.7)
     .to(q('#ticket'), { scale: 0, duration: 0.3, ease: 'power2.in' }, 19.25)
     .to(q('#pr-indicator'), { fill: '#FF5E16', duration: 0.2, yoyo: true, repeat: 5 }, 19.3)
     .to(q('#pr-machine'), { x: -2, duration: 0.07, yoyo: true, repeat: 9, ease: 'none' }, 19.4)
     .to(q('#phone'), { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'back.out(1.5)' }, 19.9)
     .to(q('#ui-nav, #ui-card-1, #ui-card-2, #ui-card-3, #ui-btn'), { scale: 1, duration: 0.5, ease: 'back.out(1.8)', stagger: 0.2 }, 20.6)
-    .to(q('#ui-progress'), { scaleX: 1, duration: 1.1, ease: 'power1.inOut' }, 21.2)
     .to(q('#pr-feedback'), { scale: 1, duration: 0.45, ease: 'back.out(2.5)' }, 22.1)
     .to(q('#ui-card-2'), { fill: '#1E66EE', x: 2, duration: 0.3, ease: 'power2.out' }, 22.8)
     .to(q('#ui-card-3'), { fill: '#FFCA53', x: -2, duration: 0.3, ease: 'power2.out' }, 22.85)
@@ -118,7 +116,7 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
 
   // Scene 5 — the product rides out and the loop restarts (24–28s)
   tl.addLabel('exit', LABELS.exit)
-    .to(q('#phone'), { x: 160, y: 150, scale: 0.8, duration: 0.9, ease: 'power2.inOut' }, 24.2)
+    .to(q('#phone'), { x: 140, y: 168, scale: 0.85, duration: 0.9, ease: 'power2.inOut' }, 24.2)
     .to(q('#phone'), { x: 420, duration: 2.0, ease: 'none' }, 25.1)
     .to(q('#phone'), { opacity: 0, duration: 0.5, ease: 'power2.in' }, 26.7)
     .addLabel('end', LABELS.end)
