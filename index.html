@@ -286,11 +286,11 @@
       return d+' Z';
     }
     function buildPuzzle(mount){
-      var P=[ {x:0,  y:0,  e:[0,1,-1,0], c:'#FFCA53', ink:'#1E1E21', t:['Project','Manager'],      sx:-150,sy:-50, r:-14, d:0},
-              {x:100,y:0,  e:[0,0,1,-1], c:'#A2D4FF', ink:'#1E1E21', t:['Product','Manager'],      sx:160, sy:-70, r:12,  d:.4},
-              {x:0,  y:100,e:[1,-1,0,0], c:'#FFB0E8', ink:'#1E1E21', t:['Event','Manager'],        sx:-140,sy:150, r:10,  d:.8},
-              {x:100,y:100,e:[-1,0,0,1], c:'#00C4B1', ink:'#1E1E21', t:['Նախագծեր','ղեկավարողներ'], sx:170, sy:170, r:-18, d:1.3} ];
-      var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','kal puzzle'); svg.setAttribute('viewBox','-24 -24 248 248');
+      var P=[ {x:0,  y:0,  e:[1,1,-1,-1], c:'#FFCA53', ink:'#1E1E21', t:['Project','Manager'],      sx:-150,sy:-50, r:-14, d:0},
+              {x:100,y:0,  e:[-1,1,1,-1], c:'#A2D4FF', ink:'#1E1E21', t:['Product','Manager'],      sx:160, sy:-70, r:12,  d:.4},
+              {x:0,  y:100,e:[1,-1,-1,1], c:'#FFB0E8', ink:'#1E1E21', t:['Event','Manager'],        sx:-140,sy:150, r:10,  d:.8},
+              {x:100,y:100,e:[-1,-1,1,1], c:'#00C4B1', ink:'#1E1E21', t:['Նախագծեր','ղեկավարողներ'], sx:170, sy:170, r:-18, d:1.3} ];
+      var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','kal puzzle'); svg.setAttribute('viewBox','-34 -34 268 268');
       svg.innerHTML=P.map(function(p,i){
         return '<g transform="translate('+p.x+' '+p.y+')"><g class="pz__piece" data-piece="'+i+'" style="--sx:'+p.sx+'px;--sy:'+p.sy+'px;--sr:'+p.r+'deg;animation-delay:'+p.d+'s">'+
                '<path d="'+piecePath(p.e)+'" fill="'+p.c+'"/>'+
