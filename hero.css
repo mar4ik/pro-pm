@@ -365,4 +365,4 @@ html{scroll-behavior:smooth}
 #teachers .tch__mods li.tch__li{position:absolute;right:0;top:0;background:none;padding:0;height:26px;display:inline-flex;align-items:center}
 #teachers .tch__ln{display:inline-flex;color:var(--black);text-decoration:none;transition:color .2s}
 #teachers .tch__ln:hover{color:var(--blue)}
-#teachers .tch__in{width:22px;height:22px;display:block}
+#teachers .tch__in{width:22px;height:22px;display:block;background:currentColor;-webkit-mask:url(assets/logos/linkedin.svg) center/contain no-repeat;mask:url(assets/logos/linkedin.svg) center/contain no-repeat}
