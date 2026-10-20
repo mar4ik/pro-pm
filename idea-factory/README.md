@@ -1,16 +1,16 @@
 # The Idea Factory
 
-A 28-second looping SVG + GSAP film for the hero of the AI քեզ Project Manager landing page. One big idea (a lightbulb) drops onto the belt and the machines turn it into a project plan, an event ticket and a product. No people, no controls, transparent background: the hero supplies the ink.
+A 16-second looping SVG + GSAP film for the hero of the AI քեզ Project Manager landing page. One huge lamp drops in, bursts into idea bubbles, which gather into an event stage, which becomes a phone, and the loop restarts. No people, machines or controls; the hero supplies the ink background.
 
 ## Stack
 
 - React 18 + TypeScript (Vite)
 - SVG for every illustrated object and machine (`src/Factory.tsx`)
-- GSAP 3 master timeline with labelled scenes (`src/timeline.ts`): `birth` 0s, `pm` 4.6s, `event` 11.4s, `product` 18s, `exit` 24s, `end` 28s
+- GSAP 3 master timeline with labelled scenes (`src/timeline.ts`): `lamp` 0s, `ideas` 2.9s, `event` 7.2s, `product` 11.4s, `end` 16s
 - Mounting and reduced-motion handling (`src/IdeaFactory.tsx`)
 - Styling in `src/styles.css`, colours mapped onto the AI Քեզ Բան brand palette
 
-Every movable SVG group has an id (for example `bulb`, `pm-lever`, `ev-stage`, `ticket`, `phone`) so parts can be animated independently.
+Every movable SVG group has an id (`bulb`, `idea-1`…`idea-5`, `ev-stage`, `phone`, `ui-*`) so parts can be animated independently.
 
 ## Run locally
 
@@ -36,7 +36,7 @@ This writes a fixed-name bundle into `redesign/factory/`: `factory.js`, `factory
 <script type="module" src="factory/factory.js"></script>
 ```
 
-Any page can host it the same way: add the stylesheet, an empty element with `id="idea-factory"`, and the module script. The component sizes itself to the element's width and keeps a 1200×640 aspect ratio.
+Any page can host it the same way: add the stylesheet, an empty element with `id="idea-factory"`, and the module script. The component sizes itself to the element's width and keeps a square aspect ratio.
 
 ## Behaviour
 
