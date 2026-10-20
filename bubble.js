@@ -1,6 +1,6 @@
 /* Brand bubble shapes for the PM page — the construction from AIQB-local/BRAND.md ("Bubble construction"):
-   rounded rectangles merged (outer corners 24, inner 12), a straight angled tail or a stepped corner at a top
-   corner, and a slit in the right side where there is room. Geometry ported from AIQB-local/script.js. */
+   rounded rectangles merged (outer corners 24, inner 12), a straight angled tail or a stepped corner at any
+   corner (tail-left, step-right, tail-bottom-left, step-bottom-right, ...), and a slit in the right side where there is room. Geometry ported from AIQB-local/script.js. */
 (function () {
   if (!('clipPath' in document.documentElement.style)) return;
   var BUBBLE = { R: 24, r: 12, TAIL: 22, SLIT: 12, INSET: 16 };
@@ -21,11 +21,15 @@
     else pts.push([0, 0, R]);
     if (right) pts.push(right === 'tail' ? [W - a + tail, 0, 0] : [W - a, 0, R], [W - a, t, r], [W, t, R]);
     else pts.push([W, 0, R]);
+    var bl = tFull >= 20 && (has('tail-bottom-left') ? 'tail' : has('step-bottom-left') ? 'step' : null);
+    var br = tFull >= 20 && !slit && (has('tail-bottom-right') ? 'tail' : has('step-bottom-right') ? 'step' : null);
     if (slit) {
       var d = Math.round(INSET + 2 + (W * 0.38 - INSET - 2) * Math.min(1, p));
       pts.push([W, s, R], [W - d, s, SLIT / 2], [W - d, s + SLIT, SLIT / 2], [W - INSET, s + SLIT, R], [W - INSET, H, R]);
-    } else pts.push([W, H, R]);
-    pts.push([0, H, R]);
+    } else if (br) pts.push([W, H - t, R], [W - a, H - t, r], br === 'tail' ? [W - a + tail, H, 0] : [W - a, H, R]);
+    else pts.push([W, H, R]);
+    if (bl) pts.push(bl === 'tail' ? [a - tail, H, 0] : [a, H, R], [a, H - t, r], [0, H - t, R]);
+    else pts.push([0, H, R]);
     return pts;
   }
   function roundedOutline(pts) {
