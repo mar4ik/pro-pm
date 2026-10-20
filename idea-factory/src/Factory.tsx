@@ -95,7 +95,7 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
 
       {/* ---------- 4. the phone (centred) ---------- */}
       <g id="phone">
-        <circle id="phone-glow" cx={300} cy={340} r={260} fill="url(#if-glow)" opacity={0} />
+        <circle id="phone-glow" cx={300} cy={340} r={190} fill="url(#if-glow)" opacity={0} />
         <rect x={190} y={150} width={220} height={390} rx={40} fill={C.navy} />
         <rect x={205} y={168} width={190} height={354} rx={28} fill="url(#if-screen)" />
         <rect id="ui-nav" x={222} y={190} width={156} height={28} rx={14} fill={C.navy} />
