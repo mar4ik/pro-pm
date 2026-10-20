@@ -258,10 +258,8 @@ html,body{overflow-x:clip}
 @media (max-width:1000px){.pm-page .tnav__links{border-bottom:0}.pm-page .tnav__link{border-bottom:0}}
 #faq .faq__grid{display:grid;grid-template-columns:minmax(0,820px);gap:clamp(24px,4vw,64px);align-items:start}
 @media (max-width:1000px){#faq .faq__grid{grid-template-columns:1fr}#faq .faq__side{display:none}}
-#contact .con__grid{display:grid;grid-template-columns:minmax(0,820px) minmax(240px,1fr);gap:clamp(24px,4vw,64px);align-items:center}
-#contact .con__kal{justify-self:end;width:clamp(240px,16vw + 80px,360px)}
-#contact .kal{display:block;width:100%;height:auto}
-@media (max-width:1000px){#contact .con__grid{grid-template-columns:1fr}#contact .con__kal{display:none}}
+#contact .con__grid{display:grid;grid-template-columns:minmax(0,820px);gap:clamp(24px,4vw,64px);align-items:center}
+@media (max-width:1000px){#contact .con__grid{grid-template-columns:1fr}}
 #contact .con__logo{display:block;height:30px;max-width:none;margin-bottom:14px;object-fit:contain}
 #contact .con__logo--aiqb{width:auto;height:22px}
 #contact .con__logo--mam{width:62px}
