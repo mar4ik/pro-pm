@@ -94,21 +94,15 @@ html,body{overflow-x:clip}
 
 /* ===== Audience section ===== */
 #audience{background:var(--black);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0}
-#audience .aud__head{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"title mascot" "lead mascot";column-gap:clamp(24px,4vw,64px);row-gap:20px;align-items:center;margin-bottom:clamp(28px,3vw,44px)}
+#audience .aud__head{display:grid;grid-template-columns:minmax(0,1fr) auto;margin-bottom:0 !important;grid-template-areas:"title mascot" "lead mascot";column-gap:clamp(24px,4vw,64px);row-gap:20px;align-items:center;margin-bottom:clamp(28px,3vw,44px)}
 #audience .aud__head h2{grid-area:title;align-self:end}
 #audience .aud__lead{grid-area:lead;align-self:start}
-#audience .aud__kal{grid-area:mascot;justify-self:end;width:clamp(300px,22vw + 80px,460px)}
+#audience .aud__kal{grid-area:mascot;justify-self:end;width:clamp(320px,34vw + 80px,620px)}
 #audience .kal{display:block;width:100%;height:auto}
 #audience h2{margin:0;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:var(--grey);max-width:46ch}
 #audience .aud__lead p{margin:0}
-#audience .aud__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-#audience .aud__cards li{position:relative;background:var(--dark-raised);color:var(--black);border-radius:24px;padding:clamp(22px,2vw,32px);padding-top:76px;display:flex;flex-direction:column;gap:10px;min-height:260px}
-#audience .aud__cards li.is-shaped{border-radius:0}
-#audience .aud__cards h3{margin:0;font-size:clamp(1.15rem,1rem + .5vw,1.5rem);line-height:1.2;font-weight:600;letter-spacing:-.01em}
-#audience .aud__cards p{margin:0;font-size:1.05rem;line-height:1.4;color:var(--black);font-weight:400}
-#audience .aud__cards li:nth-child(1){background:#FFCA53}#audience .aud__cards li:nth-child(2){background:#A2D4FF}#audience .aud__cards li:nth-child(3){background:#FFB0E8}
-@media (max-width:1000px){#audience .aud__head{grid-template-columns:1fr;grid-template-areas:"title" "lead";row-gap:16px}#audience .aud__kal{display:none}#audience .aud__cards{grid-template-columns:1fr}#audience .aud__cards li{min-height:220px}}
+@media (max-width:1000px){#audience .aud__head{grid-template-columns:1fr;grid-template-areas:"title" "lead" "mascot";row-gap:16px}#audience .aud__kal{justify-self:center;width:min(88vw,460px);margin-top:12px}}
 
 /* ===== Outcomes section (brand Blue) ===== */
 #outcomes{background:var(--blue);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0}
@@ -334,6 +328,7 @@ html,body{overflow-x:clip}
 /* ---- audience jigsaw ---- */
 .pz__piece{transform-box:fill-box;transform-origin:center;animation:pzFit 10s cubic-bezier(.3,1.4,.4,1) infinite both;transition:filter .25s}
 .pz__piece.is-lit{filter:brightness(1.08) drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.pz__piece{cursor:default}
 @keyframes pzFit{
   0%{transform:translate(var(--sx),var(--sy)) rotate(var(--sr));opacity:0}
   3%{opacity:1}

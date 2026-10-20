@@ -47,11 +47,6 @@
       </div>
       <div class="aud__kal kal-mount" data-kal="audience" aria-hidden="true"></div>
     </div>
-    <ul class="aud__cards">
-      <li data-bubble="tail-left"><h3>Project Manager‑ներ</h3><p>Հստակ պլան, կրկնվող գործը՝ AI‑ին։</p></li>
-      <li data-bubble="step-right"><h3>Product Manager‑ներ</h3><p>Հետազոտություն, առաջնահերթություն, որոշում՝ AI‑ով։</p></li>
-      <li data-bubble="step-left tail-right slit"><h3>Նախագծեր ղեկավարողներ</h3><p>Բազմափուլ աշխատանք՝ ցանկացած ոլորտում։</p></li>
-    </ul>
   </div>
 </section>
 <section class="outc" id="outcomes">
@@ -337,21 +332,19 @@
       return d+' Z';
     }
     function buildPuzzle(mount){
-      var P=[ {x:0,  y:0,  e:[0,1,-1,0], c:'#FFCA53', ink:'#1E1E21', t:'PM',       sx:-150,sy:-50, r:-14, d:0},
-              {x:100,y:0,  e:[0,0,1,-1], c:'#A2D4FF', ink:'#1E1E21', t:'Product',  sx:160, sy:-70, r:12,  d:.4},
-              {x:0,  y:100,e:[1,-1,0,0], c:'#FFB0E8', ink:'#1E1E21', t:'Նախագիծ', sx:-140,sy:150, r:10,  d:.8},
-              {x:100,y:100,e:[-1,0,0,1], c:'#FF5E16', ink:'#FFFFFF', t:'AI',       sx:170, sy:170, r:-18, d:1.5} ];
+      var P=[ {x:0,  y:0,  e:[0,1,-1,0], c:'#FFCA53', ink:'#1E1E21', t:['Project','Manager'],      sx:-150,sy:-50, r:-14, d:0},
+              {x:100,y:0,  e:[0,0,1,-1], c:'#A2D4FF', ink:'#1E1E21', t:['Product','Manager'],      sx:160, sy:-70, r:12,  d:.4},
+              {x:0,  y:100,e:[1,-1,0,0], c:'#FFB0E8', ink:'#1E1E21', t:['Event','Manager'],        sx:-140,sy:150, r:10,  d:.8},
+              {x:100,y:100,e:[-1,0,0,1], c:'#00C4B1', ink:'#1E1E21', t:['Նախագծեր','ղեկավարողներ'], sx:170, sy:170, r:-18, d:1.3} ];
       var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','kal puzzle'); svg.setAttribute('viewBox','-24 -24 248 248');
       svg.innerHTML=P.map(function(p,i){
         return '<g transform="translate('+p.x+' '+p.y+')"><g class="pz__piece" data-piece="'+i+'" style="--sx:'+p.sx+'px;--sy:'+p.sy+'px;--sr:'+p.r+'deg;animation-delay:'+p.d+'s">'+
                '<path d="'+piecePath(p.e)+'" fill="'+p.c+'"/>'+
-               '<text x="'+(p.t.length>5?46:50)+'" y="50" text-anchor="middle" dominant-baseline="central" font-family="var(--font)" font-weight="800" font-style="italic" font-size="'+(p.t.length>5?14:20)+'" fill="'+p.ink+'">'+p.t+'</text></g></g>';
+               '<text x="50" y="50" text-anchor="middle" font-family="var(--font)" font-weight="800" font-style="italic" font-size="'+(p.t[1].length>8?9.5:12)+'" fill="'+p.ink+'"><tspan x="50" dy="-0.25em">'+p.t[0]+'</tspan><tspan x="50" dy="1.2em">'+p.t[1]+'</tspan></text></g></g>';
       }).join('');
       mount.appendChild(svg);
-      var cards=document.querySelectorAll('#audience .aud__cards li'), pieces=svg.querySelectorAll('.pz__piece');
-      cards.forEach(function(card,i){ // hovering a card lifts its piece
-        card.addEventListener('mouseenter',function(){ pieces[i]&&pieces[i].classList.add('is-lit'); });
-        card.addEventListener('mouseleave',function(){ pieces[i]&&pieces[i].classList.remove('is-lit'); });
+      svg.querySelectorAll('.pz__piece').forEach(function(p){ // hovering a piece lifts it
+        p.addEventListener('mouseenter',function(){ p.classList.add('is-lit'); }); p.addEventListener('mouseleave',function(){ p.classList.remove('is-lit'); });
       });
     }
     [].slice.call(document.querySelectorAll('.kal-mount')).forEach(function(m){ m.dataset.kal==='audience'?buildPuzzle(m):build(m); });
