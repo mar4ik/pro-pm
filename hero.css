@@ -362,6 +362,6 @@ html{scroll-behavior:smooth}
 #contact .con__cards a.con__site:hover{color:#ffe45c}
 #teachers .tch__name{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}
 #teachers .tch__name h3{margin:0}
-#teachers .tch__ln{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--black);color:var(--black);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s,color .2s}
+#teachers .tch__ln{position:absolute;top:12px;right:12px;z-index:1;width:40px;height:40px;border-radius:50%;background:#fff;color:var(--black);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:background .2s,color .2s}
 #teachers .tch__ln:hover{background:var(--black);color:#fff}
 #teachers .tch__arrow{width:18px;height:18px}
