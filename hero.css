@@ -250,7 +250,7 @@ html,body{overflow-x:clip}
 #contact .con__cards a{display:flex;align-items:center;gap:.45em;color:#fff;text-decoration:none;font-size:clamp(1.3rem,1rem + .8vw,1.75rem);font-weight:700;line-height:1.25;letter-spacing:-.01em}
 #contact .con__cards a:hover{color:#ffe45c}
 #contact .con__ico{flex:none;width:.9em;height:.9em;fill:currentColor}
-@media (max-width:760px){#contact .con__cards{grid-template-columns:1fr}#contact .con__cards li{min-height:260px}}
+@media (max-width:760px){#contact .con__cards{grid-template-columns:1fr}#contact .con__cards li{min-height:260px}#contact .con__cards li.con__shape{display:none}}
 
 /* main navigation tweaks over the page's own nav styles */
 .pm-page .tnav__link:hover{text-decoration:none;opacity:.8}
