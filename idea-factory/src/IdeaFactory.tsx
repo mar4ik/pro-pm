@@ -10,6 +10,10 @@ export function IdeaFactory() {
 
   useEffect(() => {
     const svg = svgRef.current; if (!svg) return;
+    // phones get a shorter frame so the empty drop zone above the machines does not eat the screen
+    const mq = window.matchMedia('(max-width: 760px)');
+    const frame = () => svg.setAttribute('viewBox', mq.matches ? '150 -40 880 610' : '150 -230 880 800');
+    frame(); mq.addEventListener('change', frame);
     const t = buildTimelines(svg);
     window.__factory = t.master;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -19,7 +23,7 @@ export function IdeaFactory() {
     } else {
       t.master.play();
     }
-    return () => { t.kill(); delete window.__factory; };
+    return () => { t.kill(); mq.removeEventListener('change', frame); delete window.__factory; };
   }, []);
 
   return (

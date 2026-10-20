@@ -11,13 +11,13 @@ export interface FactoryTimelines {
 /** Builds the 28-second object story (master) plus the never-ending machinery (ambient). No people, no camera. */
 export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   const q = gsap.utils.selector(svg);
-  const BULB = 1.5; // "a big idea"
+  const BULB = 2.4; // "a big idea"
 
   // ---- initial state -------------------------------------------------------------------------
   const reset = () => {
-    gsap.set(q('#bulb'), { x: 110, y: 104, scale: BULB, opacity: 0, transformOrigin: '50% 100%' });
+    gsap.set(q('#bulb'), { x: 200, y: -300, scale: BULB, opacity: 1, transformOrigin: '50% 100%' });
     gsap.set(q('#plan'), { x: 548, y: 466, scale: 0, opacity: 1, transformOrigin: '50% 100%' });
-    gsap.set(q('#ticket'), { x: 738, y: 466, scale: 0, opacity: 1, transformOrigin: '50% 80%' });
+    gsap.set(q('#ticket'), { x: 702, y: 466, scale: 0, opacity: 1, transformOrigin: '50% 80%' });
     gsap.set(q('#stamp-head'), { y: 0 });
     gsap.set(q('.pm-card'), { scale: 0, x: 0, y: 0, opacity: 0, transformOrigin: '50% 50%' });
     gsap.set(q('#pm-lever'), { rotation: -38, transformOrigin: '50% 100%' });
@@ -45,8 +45,6 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   ambient.to(q('.gear--rev'), { rotation: '-=720', duration: 6, ease: 'none', transformOrigin: '50% 50%' }, 0);
   ambient.to(q('.gear--slow'), { rotation: '-=180', duration: 6, ease: 'none', transformOrigin: '50% 50%' }, 0);
   ambient.to(q('.roller'), { rotation: '+=360', duration: 1.5, ease: 'none', repeat: 3, transformOrigin: '50% 50%' }, 0);
-  ambient.fromTo(q('#belt-stripes'), { x: 0 }, { x: 48, duration: 1, ease: 'none', repeat: 5 }, 0);
-  ambient.to(q('#crate'), { y: 14, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0);
   ambient.to(q('#pm-light-1, #pm-light-2, #pm-light-3'), { opacity: 0.35, duration: 0.5, yoyo: true, repeat: 11, stagger: 0.17 }, 0);
 
   // ---- the story ------------------------------------------------------------------------------
@@ -54,12 +52,11 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
 
   // Scene 1 — a big idea drops (0–4.6s)
   tl.addLabel('birth', LABELS.birth)
-    .to(q('#bulb'), { opacity: 1, duration: 0.3 }, 0.2)
-    .to(q('#bulb'), { y: 456, duration: 1.1, ease: 'bounce.out' }, 0.4)
-    .to(q('#bulb'), { scaleY: BULB * 0.82, scaleX: BULB * 1.12, duration: 0.1, ease: 'power1.out' }, 1.0)
-    .to(q('#bulb'), { scaleY: BULB, scaleX: BULB, duration: 0.3, ease: 'elastic.out(1,0.5)' }, 1.1)
-    .to(q('#bulb'), { x: 266, duration: 1.5, ease: 'none' }, 1.6)
-    .to(q('#stamp-head'), { y: 100, duration: 0.22, ease: 'power3.in' }, 3.0)
+    .to(q('#bulb'), { y: 460, duration: 1.5, ease: 'bounce.out' }, 0.3)
+    .to(q('#bulb'), { scaleY: BULB * 0.82, scaleX: BULB * 1.12, duration: 0.1, ease: 'power1.out' }, 1.05)
+    .to(q('#bulb'), { scaleY: BULB, scaleX: BULB, duration: 0.3, ease: 'elastic.out(1,0.5)' }, 1.15)
+    .to(q('#bulb'), { x: 266, duration: 1.3, ease: 'none' }, 1.7)
+    .to(q('#stamp-head'), { y: 60, duration: 0.22, ease: 'power3.in' }, 3.0)
     .to(q('#bulb'), { scaleY: BULB * 0.86, duration: 0.1 }, 3.2)
     .to(q('#bulb-glow'), { scale: 1.8, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: '50% 50%' }, 3.23)
     .to(q('#bulb'), { scaleY: BULB, duration: 0.25, ease: 'back.out(2)' }, 3.3)
@@ -82,7 +79,7 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
     .to(q('#pm-machine'), { y: 3, duration: 0.08, yoyo: true, repeat: 5, ease: 'none' }, 9.2)
     .to(q('#plan'), { scale: 1, duration: 0.5, ease: 'back.out(2.2)' }, 9.3)
     .to(q('#pm-lever'), { rotation: -38, duration: 0.8 }, 9.9)
-    .to(q('#plan'), { x: 712, duration: 2.2, ease: 'none' }, 9.8);
+    .to(q('#plan'), { x: 676, duration: 2.2, ease: 'none' }, 9.8);
 
   // Scene 3 — the stage machine (11.4–18s): button, stage unfolds, becomes a ticket
   tl.addLabel('event', LABELS.event)
@@ -100,7 +97,7 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
     .to(q('#ev-stage'), { scale: 0.15, opacity: 0, duration: 0.6, ease: 'power3.in' }, 16.2)
     .to(q('#ticket'), { scale: 1, duration: 0.55, ease: 'back.out(2)' }, 16.55)
     .to(q('#ticket-glow'), { scale: 1.5, duration: 0.4, yoyo: true, repeat: 1, transformOrigin: '50% 50%' }, 16.7)
-    .to(q('#ticket'), { x: 931, duration: 1.6, ease: 'none' }, 17.0);
+    .to(q('#ticket'), { x: 891, duration: 1.6, ease: 'none' }, 17.0);
 
   // Scene 4 — the product machine (18–24s): ticket goes in, a phone comes out and assembles
   tl.addLabel('product', LABELS.product)

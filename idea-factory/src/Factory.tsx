@@ -6,7 +6,7 @@ export const C = {
   cream: '#F5F5F5', amber: '#FFCA53', coral: '#FFB0E8', teal: '#00C4B1', lemon: '#ffe45c', grey: '#D1D1D1',
 };
 
-export const VIEW = { full: '0 30 1200 530' };
+export const VIEW = { full: '150 -230 880 800' };
 
 /** Gear outline: `teeth` rounded teeth between an outer and inner radius. */
 export function gearPath(teeth: number, rOuter: number, rInner: number): string {
@@ -66,8 +66,7 @@ function Card({ x, y, fill, w = 44, h = 28 }: { x: number; y: number; fill: stri
 }
 
 export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
-  const rollers = Array.from({ length: 19 }, (_, i) => 70 + i * 60);
-  const stripes = Array.from({ length: 26 }, (_, i) => 40 + i * 48);
+  const rollers = Array.from({ length: 14 }, (_, i) => 200 + i * 60);
   const cardColors = [C.amber, C.coral, C.teal, C.orange, C.sky];
   // cards fan out above the machine, then converge into the plan
   const cardSlots = [
@@ -92,34 +91,6 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
         </linearGradient>
       </defs>
 
-      {/* ---------- soft gears behind everything ---------- */}
-      <g id="bg-gears" opacity={0.16}>
-        <Gear cx={120} cy={120} teeth={14} r={92} fill={C.cream} hole={C.ink} className="gear gear--slow" />
-        <Gear cx={250} cy={70} teeth={10} r={52} fill={C.cream} hole={C.ink} className="gear gear--rev" />
-        <Gear cx={1010} cy={120} teeth={12} r={70} fill={C.cream} hole={C.ink} className="gear gear--rev" />
-        <Gear cx={830} cy={60} teeth={9} r={40} fill={C.cream} hole={C.ink} className="gear" />
-        <Gear cx={640} cy={110} teeth={11} r={56} fill={C.cream} hole={C.ink} className="gear gear--slow" />
-      </g>
-
-      {/* ---------- overhead pulley with a drifting crate ---------- */}
-      <g id="pulley">
-        <rect x={1098} y={36} width={44} height={16} rx={6} fill={C.navy} />
-        <circle cx={1120} cy={76} r={22} fill={C.cream} stroke={C.navy} strokeWidth={5} />
-        <circle id="pulley-wheel" className="gear gear--rev" cx={1120} cy={76} r={9} fill={C.navy} />
-        <g id="crate">
-          <line x1={1120} y1={76} x2={1120} y2={160} stroke={C.grey} strokeWidth={3} />
-          <rect x={1096} y={160} width={48} height={40} rx={6} fill={C.amber} stroke={C.navy} strokeWidth={3} />
-          <path d="M1100 180 L1140 180 M1120 164 L1120 196" stroke={C.navy} strokeWidth={3} />
-        </g>
-      </g>
-
-      {/* ---------- hopper: where the idea is born ---------- */}
-      <g id="hopper">
-        <path d="M52 76 L168 76 L140 150 L80 150 Z" fill={C.cream} stroke={C.navy} strokeWidth={5} strokeLinejoin="round" />
-        <rect x={42} y={60} width={136} height={22} rx={9} fill={C.navy} />
-        <rect x={80} y={148} width={60} height={24} rx={7} fill={C.grey} />
-      </g>
-
       {/* ---------- stamp arm ---------- */}
       <g id="stamp">
         <rect x={198} y={250} width={26} height={220} rx={8} fill={C.navy} />
@@ -129,18 +100,16 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
           <rect x={246} y={300} width={42} height={30} rx={8} fill={C.orange} />
           <rect x={252} y={330} width={30} height={8} rx={3} fill={C.grey} />
         </g>
-        <Gear id="stamp-gear" cx={211} cy={300} teeth={8} r={26} fill={C.amber} className="gear" />
       </g>
 
       {/* ---------- station 1: the plan machine ---------- */}
       <g id="station-pm">
         <g id="pm-machine">
-          <rect x={330} y={300} width={212} height={168} rx={22} fill={C.cream} stroke={C.navy} strokeWidth={5} />
+          <rect x={330} y={300} width={212} height={168} rx={22} fill={C.cream} />
           <rect x={352} y={318} width={168} height={46} rx={10} fill={C.navy} />
           <rect id="pm-light-1" x={364} y={330} width={22} height={22} rx={11} fill={C.amber} />
           <rect id="pm-light-2" x={396} y={330} width={22} height={22} rx={11} fill={C.coral} />
           <rect id="pm-light-3" x={428} y={330} width={22} height={22} rx={11} fill={C.teal} />
-          <rect x={470} y={334} width={40} height={14} rx={7} fill={C.cream} opacity={0.9} />
           <rect x={330} y={420} width={34} height={38} rx={8} fill={C.ink} />
           <rect x={508} y={420} width={34} height={38} rx={8} fill={C.ink} />
           <Gear id="pm-gear-1" cx={395} cy={412} teeth={9} r={30} fill={C.orange} className="gear" />
@@ -148,7 +117,7 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
           <rect x={440} y={290} width={34} height={16} rx={5} fill={C.grey} />
           <g id="pm-lever">
             <rect x={543} y={330} width={8} height={60} rx={4} fill={C.grey} />
-            <circle cx={547} cy={330} r={13} fill={C.orange} stroke={C.cream} strokeWidth={3} />
+            <circle cx={547} cy={330} r={13} fill={C.orange} />
           </g>
           <circle cx={546} cy={388} r={8} fill={C.grey} />
         </g>
@@ -162,7 +131,7 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
       </g>
 
       {/* ---------- station 2: the stage machine ---------- */}
-      <g id="station-event">
+      <g id="station-event" transform="translate(-36 0)">
         <g id="ev-pedestal">
           <rect x={596} y={396} width={56} height={74} rx={10} fill={C.navy} />
           <rect x={590} y={388} width={68} height={16} rx={8} fill={C.grey} />
@@ -202,9 +171,9 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
       </g>
 
       {/* ---------- station 3: the product machine ---------- */}
-      <g id="station-product">
+      <g id="station-product" transform="translate(-40 0)">
         <g id="pr-machine">
-          <rect x={856} y={300} width={150} height={168} rx={22} fill={C.cream} stroke={C.navy} strokeWidth={5} />
+          <rect x={856} y={300} width={150} height={168} rx={22} fill={C.cream} />
           <rect x={900} y={290} width={62} height={18} rx={6} fill={C.grey} />
           <rect x={874} y={326} width={114} height={60} rx={10} fill={C.navy} />
           <rect x={886} y={340} width={60} height={8} rx={4} fill={C.cream} opacity={0.8} />
@@ -218,16 +187,13 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
 
       {/* ---------- conveyor belt ---------- */}
       <g id="belt">
-        {[160, 480, 800, 1100].map((x) => <rect key={x} x={x} y={496} width={16} height={64} rx={4} fill={C.navy} />)}
-        <rect x={40} y={468} width={1120} height={34} rx={17} fill={C.navy} />
-        <g id="belt-stripes">
-          {stripes.map((x) => <rect key={x} x={x} y={481} width={22} height={8} rx={4} fill={C.cream} opacity={0.55} />)}
-        </g>
+        {[200, 470, 740, 1000].map((x) => <rect key={x} x={x} y={496} width={16} height={64} rx={4} fill={C.navy} />)}
+        <rect x={160} y={468} width={860} height={34} rx={17} fill={C.navy} />
         <g id="rollers">
           {rollers.map((x) => (
             <g key={x} className="roller">
-              <circle cx={x} cy={503} r={12} fill={C.cream} stroke={C.navy} strokeWidth={3} />
-              <line x1={x - 7} y1={503} x2={x + 7} y2={503} stroke={C.navy} strokeWidth={3} strokeLinecap="round" />
+              <circle cx={x} cy={503} r={12} fill={C.cream} />
+              <line x1={x - 7} y1={503} x2={x + 7} y2={503} strokeLinecap="round" />
             </g>
           ))}
         </g>
@@ -245,12 +211,11 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
         </g>
         <g id="ticket">
           <circle id="ticket-glow" cx={0} cy={-20} r={40} fill="url(#if-glow)" opacity={0.7} />
-          <path d="M-36 -40 L36 -40 A6 6 0 0 0 36 -28 L36 -12 A6 6 0 0 0 36 0 L-36 0 A6 6 0 0 0 -36 -12 L-36 -28 A6 6 0 0 0 -36 -40 Z" fill={C.lemon} stroke={C.navy} strokeWidth={3} />
+          <path d="M-36 -40 L36 -40 A6 6 0 0 0 36 -28 L36 -12 A6 6 0 0 0 36 0 L-36 0 A6 6 0 0 0 -36 -12 L-36 -28 A6 6 0 0 0 -36 -40 Z" fill={C.lemon} />
           <rect x={-26} y={-30} width={30} height={5} rx={2.5} fill={C.ink} />
           <rect x={-26} y={-20} width={20} height={5} rx={2.5} fill={C.ink} opacity={0.5} />
-          <line x1={14} y1={-34} x2={14} y2={-6} stroke={C.ink} strokeWidth={2} strokeDasharray="3 3" />
         </g>
-        <g id="phone">
+        <g id="phone" transform="translate(-40 0)">
           <circle id="phone-glow" cx={931} cy={236} r={110} fill="url(#if-glow)" opacity={0} />
           <rect x={886} y={154} width={90} height={164} rx={18} fill={C.navy} />
           <rect x={893} y={162} width={76} height={148} rx={12} fill="url(#if-screen)" />
@@ -263,12 +228,11 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
           <rect id="ui-btn" x={899} y={276} width={64} height={22} rx={11} fill={C.orange} />
           <rect x={918} y={285} width={26} height={4} rx={2} fill="#fff" />
         </g>
-        <g id="pr-feedback">
+        <g id="pr-feedback" transform="translate(-40 0)">
           <rect x={984} y={176} width={76} height={44} rx={12} fill={C.coral} />
           <path d="M992 218 L986 232 L1006 218 Z" fill={C.coral} />
           <rect x={996} y={188} width={44} height={6} rx={3} fill={C.ink} opacity={0.8} />
           <rect x={996} y={200} width={28} height={6} rx={3} fill={C.ink} opacity={0.45} />
-          <circle cx={1050} cy={190} r={6} fill={C.orange} />
         </g>
       </g>
     </svg>
