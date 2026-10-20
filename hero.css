@@ -103,12 +103,12 @@ html{scroll-behavior:smooth}
 @media (max-width:640px){#hero .hero__actions .btn{width:100%}}
 
 /* ===== Audience section ===== */
-#audience{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(32px,2rem + 1vw,48px) 0}
+#audience{background:var(--blue);color:#fff;font-family:var(--font);padding:clamp(32px,2rem + 1vw,48px) 0}
 #audience .aud__head{display:grid;grid-template-columns:1fr;grid-template-areas:"title" "lead";row-gap:16px;margin-bottom:clamp(24px,3vw,36px)}
 #audience .aud__head h2{grid-area:title;align-self:end}
 #audience .aud__lead{grid-area:lead;align-self:start}
 #audience h2{margin:0;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
-#audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:#444;max-width:62ch}
+#audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:rgba(255,255,255,.88);max-width:62ch}
 #audience .aud__lead p{margin:0}
 
 /* ===== Outcomes section (brand Blue) ===== */
