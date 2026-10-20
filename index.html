@@ -337,9 +337,17 @@
               {x:0,  y:100,e:[1,-1,0,0], c:'#FFB0E8', ink:'#1E1E21', t:['Event','Manager'],        sx:-140,sy:150, r:10,  d:.8},
               {x:100,y:100,e:[-1,0,0,1], c:'#00C4B1', ink:'#1E1E21', t:['Նախագծեր','ղեկավարողներ'], sx:170, sy:170, r:-18, d:1.3} ];
       var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','kal puzzle'); svg.setAttribute('viewBox','-24 -24 248 248');
-      svg.innerHTML=P.map(function(p,i){
+      // tone-on-tone patterns: the same colour, darkened a little, so each piece reads as one shade with texture
+      var PAT=['<circle cx="6" cy="6" r="2.2"/>',                                   // dots
+               '<path d="M-2 10 L10 -2 M4 16 L16 4" stroke-width="2.2" fill="none"/>', // diagonal stripes
+               '<circle cx="7" cy="7" r="4" stroke-width="1.6" fill="none"/>',          // rings
+               '<rect x="2" y="2" width="5" height="5" rx="1"/>'];                     // small squares
+      var defs='<defs>'+P.map(function(p,i){ return '<pattern id="pz-p'+i+'" width="14" height="14" patternUnits="userSpaceOnUse"><g fill="#1E1E21" stroke="#1E1E21" opacity=".16">'+PAT[i]+'</g></pattern><clipPath id="pz-c'+i+'"><path d="'+piecePath(p.e)+'"/></clipPath>'; }).join('')+'</defs>';
+      svg.innerHTML=defs+P.map(function(p,i){
         return '<g transform="translate('+p.x+' '+p.y+')"><g class="pz__piece" data-piece="'+i+'" style="--sx:'+p.sx+'px;--sy:'+p.sy+'px;--sr:'+p.r+'deg;animation-delay:'+p.d+'s">'+
                '<path d="'+piecePath(p.e)+'" fill="'+p.c+'"/>'+
+               '<rect x="-20" y="-20" width="140" height="140" fill="url(#pz-p'+i+')" clip-path="url(#pz-c'+i+')"/>'+
+               '<rect x="12" y="12" width="76" height="76" rx="10" fill="'+p.c+'" opacity=".9"/>'+
                '<text x="50" y="50" text-anchor="middle" font-family="var(--font)" font-weight="800" font-style="italic" font-size="'+(p.t[1].length>8?9.5:12)+'" fill="'+p.ink+'"><tspan x="50" dy="-0.25em">'+p.t[0]+'</tspan><tspan x="50" dy="1.2em">'+p.t[1]+'</tspan></text></g></g>';
       }).join('');
       mount.appendChild(svg);
