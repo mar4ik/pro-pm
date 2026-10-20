@@ -220,14 +220,14 @@ html{scroll-behavior:smooth}
 #contact .shell{max-width:var(--page-max);margin-inline:auto}
 #contact h2{margin:0 0 14px;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #contact .con__lead{margin:0 0 clamp(24px,3vw,40px);font-size:clamp(1.05rem,1rem + .4vw,1.25rem);line-height:1.4;font-weight:300;color:rgba(255,255,255,.85);max-width:50ch}
-#contact .con__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#contact .con__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 #contact .con__cards li{position:relative;background:var(--black);border-radius:24px;padding:clamp(22px,2vw,32px);padding-top:76px;display:flex;flex-direction:column;gap:6px;min-height:260px}
 #contact .con__cards li.is-shaped{border-radius:0}
 #contact .con__cards h3{margin:0 0 4px;font-size:clamp(1.15rem,1rem + .5vw,1.5rem);line-height:1.2;font-weight:600;letter-spacing:-.01em}
 #contact .con__cards a{display:flex;align-items:center;gap:.45em;color:#fff;text-decoration:none;font-size:clamp(1.3rem,1rem + .8vw,1.75rem);font-weight:700;line-height:1.25;letter-spacing:-.01em}
 #contact .con__cards a:hover{color:#ffe45c}
 #contact .con__ico{flex:none;width:.9em;height:.9em;fill:currentColor}
-@media (max-width:760px){#contact .con__cards{grid-template-columns:1fr}#contact .con__cards li{min-height:260px}#contact .con__cards li.con__shape{display:none}}
+@media (max-width:760px){#contact .con__cards{grid-template-columns:1fr}#contact .con__cards li{min-height:260px}}
 
 /* main navigation tweaks over the page's own nav styles */
 .pm-page .tnav__link:hover{text-decoration:none;opacity:.8}
