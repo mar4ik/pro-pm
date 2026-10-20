@@ -1,4 +1,3 @@
-/* New hero for the PM page: scoped under #hero so the page's own .pm-page rules do not apply */
 @font-face{font-family:"Adelle Sans ARM";src:url(fonts/AdelleSans_ARM-Light.woff2) format("woff2");font-weight:300;font-display:swap}
 @font-face{font-family:"Adelle Sans ARM";src:url(fonts/AdelleSans_ARM-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Adelle Sans ARM";src:url(fonts/AdelleSans_ARM-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
@@ -22,7 +21,7 @@ html{scroll-behavior:smooth}
 .pm-page{--page-max:1240px}
 @media (min-width:1181px){.pm-page{--page-gutter:100px}}
 #hero{background:var(--black);color:#fff;font-family:var(--font)}
-#hero h1, #hero h2{font-weight:800;font-style:italic;line-height:1.02;letter-spacing:-.024em;margin:0}
+#hero h1,#hero h2{font-weight:800;font-style:italic;line-height:1.02;letter-spacing:-.024em;margin:0}
 #hero p{margin:0}
 #hero a{color:inherit}
 #hero img{max-width:100%;display:block}
@@ -31,12 +30,6 @@ html{scroll-behavior:smooth}
 #hero .btn-orange{background:var(--orange);color:#fff}
 #hero .btn-orange:hover{background:var(--orange-deep)}
 #hero .btn-ghost{border-color:currentColor;background:transparent}
-#hero .btn-black{background:var(--black);color:#fff}
-#hero .eyes{display:inline-flex;gap:.12em;align-items:center}
-#hero .eyes i{display:block;width:1em;height:1em;border-radius:50%;background:#fff;position:relative}
-#hero .eyes i::after{content:"";position:absolute;width:.5em;height:.5em;border-radius:50%;background:#1E1E21;left:.32em;top:.25em}
-#hero .eyes.on-light i{background:#1E1E21}
-#hero .eyes.on-light i::after{background:#fff}
 #hero{padding:clamp(48px,4rem + 2vw,96px) 0 clamp(40px,3rem + 2vw,72px);border-bottom:1px solid #3a3a3e}
 #hero .hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:center}
 :is(#hero,#register) .tag{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-size:.9rem;font-weight:600;line-height:1;padding:9px 14px;border-radius:var(--r-pill)}
@@ -79,30 +72,15 @@ html{scroll-behavior:smooth}
 :is(#hero,#register) .tk-obj{position:absolute;right:calc(var(--r) - 72px);bottom:var(--b);width:var(--s);height:var(--s);color:var(--tk-ink);transform:rotate(var(--rot));animation:rollObj 1s cubic-bezier(.2,.9,.3,1) both;animation-delay:var(--d)}
 :is(#hero,#register) .tk-obj svg{display:block;width:100%;height:100%;transform-origin:50% 80%}
 @keyframes rollObj{0%{transform:translateX(-240px) rotate(calc(var(--rot) - 720deg));opacity:0}18%{opacity:1}80%{transform:translateX(6px) rotate(calc(var(--rot) + 10deg))}100%{transform:translateX(0) rotate(var(--rot));opacity:1}}
-@media (max-width:640px){:is(#hero,#register) .ticket__art{width:min(170px,100%);height:80px}:is(#hero,#register) .ticket__price-row{flex-wrap:wrap}
-:is(#hero,#register) .tk-obj{width:calc(var(--s) * .62);height:calc(var(--s) * .62);right:calc((var(--r) - 72px) * .62);bottom:calc(var(--b) * .62)}}
-:is(#hero,#register) .ticket__cta{display:flex;justify-content:center;align-items:center;padding:.9em 1.6em;border:1.5px solid transparent;border-radius:var(--r-pill);background:var(--orange);color:#fff;font-size:1rem;line-height:1;font-weight:600;text-decoration:none}
-:is(#hero,#register) .ticket__cta:hover{background:var(--orange-deep)}
+@media (max-width:640px){:is(#hero,#register) .ticket__art{width:min(170px,100%);height:80px}:is(#hero,#register) .ticket__price-row{flex-wrap:wrap}:is(#hero,#register) .tk-obj{width:calc(var(--s) * .62);height:calc(var(--s) * .62);right:calc((var(--r) - 72px) * .62);bottom:calc(var(--b) * .62)}}
 :is(#hero,#register) .up{animation:up 420ms cubic-bezier(.2,.7,.2,1) both}
-:is(#hero,#register) .roll{animation:rollIn 1000ms cubic-bezier(.2,.9,.3,1) 900ms both}
-:is(#hero,#register) .spin{animation:spin 7s cubic-bezier(.6,0,.4,1) 3s infinite}
-:is(#hero,#register) .hop{transform-origin:50% 100%;animation:hop 4.5s ease-in-out 2s infinite}
-:is(#hero,#register) .look{animation:look 5.5s ease-in-out 2.4s infinite}
 @keyframes drop{from{opacity:0;transform:translateY(40px) rotate(-4deg)}to{opacity:1;transform:none}}
 @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes rollIn{0%{opacity:0;transform:translateX(-170px) rotate(-540deg)}15%{opacity:1}100%{opacity:1;transform:none}}
-@keyframes spin{0%,82%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-@keyframes hop{0%,56%,100%{transform:none}60%{transform:scale(1.14,.86)}68%{transform:translateY(-30px) scale(.92,1.08)}76%{transform:scale(1.12,.88)}81%{transform:translateY(-12px)}87%{transform:scale(1.05,.95)}92%{transform:none}}
-@keyframes look{0%,18%{transform:none}24%,38%{transform:translateX(-9px)}44%,58%{transform:translateX(9px)}64%,100%{transform:none}}
-@media (prefers-reduced-motion:reduce){:is(#hero,#register) .ticket, #hero .perf, :is(#hero,#register) .up, :is(#hero,#register) .roll, :is(#hero,#register) .spin, :is(#hero,#register) .hop, :is(#hero,#register) .look, :is(#hero,#register) .tk-obj{animation:none}}
-#hero .hero__eyes{position:absolute;right:var(--page-gutter);top:18px;font-size:18px;opacity:.9}
-@media (max-width:1000px){#hero .hero__grid{grid-template-columns:minmax(0,1fr);gap:40px;align-items:start}#hero .hero__grid>*{min-width:0}
-:is(#hero,#register) .ticket-wrap{max-width:560px}
-#hero h1{max-width:15ch}}
+@media (prefers-reduced-motion:reduce){:is(#hero,#register) .ticket,#hero .perf,:is(#hero,#register) .up,:is(#hero,#register) .tk-obj{animation:none}}
+@media (max-width:1000px){#hero .hero__grid{grid-template-columns:minmax(0,1fr);gap:40px;align-items:start}#hero .hero__grid>*{min-width:0}:is(#hero,#register) .ticket-wrap{max-width:560px}#hero h1{max-width:15ch}}
 @media (max-width:640px){#hero .hero__actions .btn{width:100%}}
 
-/* ===== Audience section ===== */
 #audience{background:var(--blue);color:#fff;font-family:var(--font);padding:clamp(32px,2rem + 1vw,48px) 0}
 #audience .aud__head{display:grid;grid-template-columns:1fr;grid-template-areas:"title" "lead";row-gap:16px;margin-bottom:clamp(24px,3vw,36px)}
 #audience .aud__head h2{grid-area:title;align-self:end}
@@ -111,26 +89,9 @@ html{scroll-behavior:smooth}
 #audience .aud__lead{display:flex;flex-direction:column;gap:.75em;font-size:clamp(1.125rem,1rem + .55vw,1.5rem);line-height:1.4;font-weight:300;color:rgba(255,255,255,.88);max-width:62ch}
 #audience .aud__lead p{margin:0}
 
-/* ===== Outcomes section (brand Blue) ===== */
-/* the rolling eyes logo (outcomes + programme): rolls across its column with real wheel rotation */
-@keyframes rollAcross{from{transform:translateX(0) rotate(0deg)}to{transform:translateX(var(--travel,0px)) rotate(var(--turns,0deg))}}
 #programme .cur__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
-@media (max-width:1000px){#programme .cur__grid{grid-template-columns:1fr}#programme .cur__side{display:none}}
+@media (max-width:1000px){#programme .cur__grid{grid-template-columns:1fr}}
 
-/* ===== How we work (brand Grey) ===== */
-#format{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0}
-#format .how__grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,4vw,72px);align-items:center}
-#format h2{margin:0 0 clamp(24px,3vw,40px);font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
-#format .how__list{list-style:none;margin:0;padding:0}
-#format .how__list li{display:grid;grid-template-columns:3.2rem 1fr;gap:12px;align-items:start;padding:12px 0;font-size:clamp(1rem,.95rem + .3vw,1.2rem);line-height:1.4;font-weight:400}
-#format .how__n{font-weight:800;font-style:italic;font-size:1.6em;line-height:1;margin-top:.07em;letter-spacing:-.03em;color:var(--black)}
-#format .how__kal{justify-self:end;width:clamp(280px,20vw + 80px,440px)}
-#format .kal{display:block;width:100%;height:auto}
-@media (max-width:1000px){#format .how__grid{grid-template-columns:1fr}#format .how__kal{justify-self:center;width:min(70vw,360px);order:-1}}
-
-/* the eyes logo, inline so the eyes can blink */
-
-/* ===== Curriculum (ink) ===== */
 #programme{background:var(--black);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0}
 #programme h2{margin:0 0 clamp(28px,3vw,44px);font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 #programme .cur__module{margin:clamp(28px,3vw,44px) 0 12px;text-align:left;font-size:clamp(1.2rem,1rem + .8vw,1.7rem);line-height:1.2;font-weight:700;font-style:normal;letter-spacing:-.01em;color:var(--orange)}
@@ -156,25 +117,6 @@ html{scroll-behavior:smooth}
 #programme .cur__tools img{width:18px;height:18px;display:block}
 @media (max-width:860px){#programme .cur__body{padding-left:22px}#programme .cur__lesson summary{grid-template-columns:2.6rem 1fr 28px;padding:16px 18px}#programme .cur__n{font-size:1.35rem}}
 
-/* the page stylesheet gives some section classes outer margins; the new sections butt together */
-
-/* ===== Demo Day (brand Orange, white text) ===== */
-#demo-day{background:var(--orange);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0;margin:0}
-#demo-day .demo__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,96px);align-items:center}
-#demo-day .demo__kal{justify-self:start;width:clamp(280px,22vw + 80px,460px)}
-#demo-day .kal{display:block;width:100%;height:auto}
-#demo-day .demo__label{margin:0 0 10px;font-weight:600;font-style:normal;font-size:clamp(1.25rem,1rem + .9vw,1.75rem);line-height:1.2;letter-spacing:-.01em}
-#demo-day h2{margin:0 0 18px;font-weight:800;font-style:italic;font-size:clamp(2.2rem,1.2rem + 3.2vw,4.2rem);line-height:1.02;letter-spacing:-.024em;max-width:14ch}
-#demo-day .demo__lead{margin:0 0 24px;font-size:clamp(1.05rem,1rem + .4vw,1.3rem);line-height:1.4;font-weight:400;max-width:46ch}
-#demo-day .demo__points{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:10px}
-#demo-day .demo__points li{display:grid;grid-template-columns:3rem 1fr;gap:12px;align-items:start;font-size:clamp(1.05rem,1rem + .35vw,1.3rem);line-height:1.35;font-weight:600}
-#demo-day .demo__n{font-weight:800;font-style:italic;font-size:1.6em;line-height:1;margin-top:.07em;letter-spacing:-.03em}
-#demo-day .demo__note{margin:0 0 28px;font-size:1rem;font-weight:300;opacity:.9}
-#demo-day .demo__cta{background:var(--black);color:#fff;border-radius:var(--r-pill);padding:.9em 1.6em;border:1.5px solid transparent;font-size:1rem;line-height:1;font-weight:600;text-decoration:none;display:inline-flex;align-items:center}
-#demo-day .demo__cta:hover{background:#000}
-@media (max-width:1000px){#demo-day .demo__grid{grid-template-columns:1fr}#demo-day .demo__kal{justify-self:center;width:min(70vw,360px)}}
-
-/* scroll to top */
 .totop{position:fixed;right:20px;bottom:20px;z-index:60;width:48px;height:48px;border-radius:50%;background:var(--black);color:#fff;border:1.5px solid rgba(255,255,255,.35);display:grid;place-items:center;padding:0;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s,background .2s}
 .totop svg{width:22px;height:22px}
 .totop.is-on{opacity:1;transform:none;pointer-events:auto}
@@ -183,7 +125,6 @@ html{scroll-behavior:smooth}
 @media (max-width:760px){.totop{width:44px;height:44px}}
 @media (prefers-reduced-motion:reduce){.totop{transition:none}}
 
-/* ===== Register (ink) ===== */
 #register{background:var(--black);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0;margin:0}
 #register .reg__grid{display:grid;grid-template-columns:minmax(0,520px) minmax(320px,520px);gap:32px;align-items:start;justify-content:center}
 #register .reg__main{max-width:520px}
@@ -209,13 +150,9 @@ html{scroll-behavior:smooth}
 #register .ticket-wrap{justify-self:start;width:100%;max-width:520px}
 @media (max-width:1000px){#register .reg__grid{grid-template-columns:1fr}#register .reg__main,#register .ticket-wrap{max-width:none;width:100%}#register .ticket-wrap{justify-self:stretch;order:-1}}
 
-/* the new sections share one centred container, narrower than the page's 1440px shell */
-
-/* ===== FAQ (grey) ===== */
 #faq{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0;margin:0}
 #faq h2{margin:0 0 clamp(24px,3vw,40px);font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
 
-/* ===== Contact (ink) ===== */
 #contact{background:var(--blue);color:#fff;font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0;margin:0}
 #contact .shell{max-width:var(--page-max);margin-inline:auto}
 #contact h2{margin:0 0 14px;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
@@ -230,7 +167,6 @@ html{scroll-behavior:smooth}
 #contact .con__site .con__ico{fill:none}
 @media (max-width:760px){#contact .con__cards{grid-template-columns:1fr}#contact .con__cards li{min-height:260px}}
 
-/* main navigation tweaks over the page's own nav styles */
 .pm-page .tnav__link:hover{text-decoration:none;opacity:.8}
 @media (max-width:1000px){.pm-page .tnav__links{border-bottom:0}.pm-page .tnav__link{border-bottom:0}}
 #contact .con__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
@@ -239,10 +175,8 @@ html{scroll-behavior:smooth}
 #contact .con__logo--aiqb{width:172px;height:32px;object-position:left center}
 #contact .con__logo--mam{width:91px;height:44px;object-position:left center}
 
-/* the nav's lockup mask lives in images/ now (the page css points at /imgs/) */
 .pm-page .lockup .lockup__mark{-webkit-mask-image:url(images/pm/lockup-light.svg);mask-image:url(images/pm/lockup-light.svg)}
 
-/* ---- teachers ---- */
 #teachers{background:#F5F5F5;color:var(--black);font-family:var(--font);padding:clamp(40px,2.5rem + 1.5vw,64px) 0;margin:0;overflow:hidden}
 #teachers .shell{max-width:var(--page-max);margin-inline:auto}
 #teachers .tch__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(20px,2vw,32px)}
@@ -267,57 +201,8 @@ html{scroll-behavior:smooth}
 #teachers .tch__card p{margin:0;font-size:1rem;line-height:1.45;font-weight:300;color:#3a3a3d}
 @media (max-width:760px){#teachers .tch__head{flex-direction:column;align-items:flex-start}#teachers .tch__nav{display:none}#teachers .tch__card{flex-basis:min(78vw,320px)}}
 
-/* ---- project board animation (replaces the kaleidoscope) ---- */
-.board__card{transform:translate(8px,48px);animation:boardFlow 12s cubic-bezier(.45,0,.2,1) infinite}
-.board__bar{transform-box:fill-box;transform-origin:left center;transform:scaleX(0);animation:boardBar 12s linear infinite}
-.board__check{opacity:0;transform-box:fill-box;transform-origin:center;animation:boardCheck 12s ease-out infinite}
-@keyframes boardFlow{
-  0%{transform:translate(8px,64px);opacity:0}
-  4%{transform:translate(8px,48px);opacity:1}
-  30%{transform:translate(8px,48px)}
-  36%{transform:translate(112px,48px)}
-  63%{transform:translate(112px,48px)}
-  69%{transform:translate(216px,48px)}
-  94%{transform:translate(216px,48px);opacity:1}
-  98%{transform:translate(216px,34px);opacity:0}
-  100%{transform:translate(8px,64px);opacity:0}
-}
-@keyframes boardBar{0%,36%{transform:scaleX(0)}62%{transform:scaleX(1)}100%{transform:scaleX(1)}}
-@keyframes boardCheck{0%,68%{opacity:0;transform:scale(.4)}74%{opacity:1;transform:scale(1.15)}78%{transform:scale(1)}100%{opacity:1;transform:scale(1)}}
-@media (prefers-reduced-motion:reduce){.board__card,.board__bar,.board__check{animation:none}.board__card:nth-of-type(1){transform:translate(8px,48px)}.board__card:nth-of-type(2){transform:translate(112px,48px)}.board__card:nth-of-type(3){transform:translate(216px,48px)}.board__card:nth-of-type(3) .board__check{opacity:1}.board__card:nth-of-type(2) .board__bar{transform:scaleX(.6)}.board__card:nth-of-type(3) .board__bar{transform:scaleX(1)}}
-
-/* ---- stat band ---- */
-/* ---- tools strip ---- */
-#format .how__tools{list-style:none;margin:clamp(24px,3vw,40px) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
-#format .how__tools li{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--black);border-radius:var(--r-pill);padding:10px 16px;font-size:1rem;font-weight:600;line-height:1}
-#format .how__tools img{width:20px;height:20px;display:block}
-/* ---- Demo Day steps as bubbles ---- */
-#demo-day .demo__steps{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-#demo-day .demo__steps li{position:relative;background:#fff;color:var(--black);border-radius:24px;padding:18px;padding-top:62px;min-height:190px;display:flex;flex-direction:column;gap:6px}
-#demo-day .demo__steps li.is-shaped{border-radius:0}
-#demo-day .demo__steps .demo__n{font-weight:800;font-style:italic;font-size:1.6rem;line-height:1;letter-spacing:-.03em;color:var(--orange)}
-#demo-day .demo__steps h3{margin:0;font-size:1.05rem;line-height:1.3;font-weight:600}
-@media (max-width:640px){#demo-day .demo__steps{grid-template-columns:1fr}#demo-day .demo__steps li{min-height:150px;padding-top:56px}}
-
-
-
-/* ---- hero illustration ---- */
-#hero .hero__art{position:relative;justify-self:center;width:min(100%,540px);--px:0px;--py:0px}
-#hero .hero__team{display:block;width:100%;height:auto;max-width:none;transform:translate(var(--px),var(--py));animation:artIn .9s cubic-bezier(.2,1,.3,1) both;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
-#hero .hero__fx{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-#hero .fx__b{transform-box:fill-box;transform-origin:center bottom;opacity:0;animation:fxPop 7.5s ease-in-out infinite}
-@keyframes artIn{0%{opacity:0;transform:translate(var(--px),calc(var(--py) + 28px)) scale(.97)}100%{opacity:1;transform:translate(var(--px),var(--py)) scale(1)}}
-@keyframes fxPop{0%{opacity:0;transform:translateY(8px) scale(.85)}10%{opacity:1;transform:translateY(0) scale(1)}45%{transform:translateY(-3px) scale(1)}80%{opacity:1;transform:translateY(0) scale(1)}92%{opacity:0;transform:translateY(-10px) scale(.95)}100%{opacity:0;transform:translateY(-10px) scale(.95)}}
-#hero .hero__price{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin:20px 0 0;color:#fff}
-#hero .hero__price b{font-weight:800;font-style:italic;font-size:clamp(1.5rem,1.2rem + 1vw,2.1rem);line-height:1;letter-spacing:-.02em}
-#hero .hero__price span{font-size:1rem;font-weight:400;color:var(--grey)}
-@media (max-width:1000px){#hero .hero__art{width:min(100%,460px);margin-inline:auto;order:1}}
-@media (prefers-reduced-motion:reduce){#hero .hero__team{animation:none}#hero .fx__b{animation:none;opacity:1}}
-
-/* ---- hero: The Idea Factory ---- */
 #hero .hero__factory{width:100%;min-width:0;align-self:center;display:flex;justify-content:flex-end;align-items:center}
-#hero .hero__factory .if-root{width:100%;height:auto;aspect-ratio:1/1}   /* the stage is as big as the column: a full square */
-#hero .hero__factory .if-stage{height:auto;overflow:hidden}
+#hero .hero__factory .if-root{width:100%;height:auto;aspect-ratio:1/1}#hero .hero__factory .if-stage{height:auto;overflow:hidden}
 #hero .hero__factory .if-stage svg{overflow:hidden;width:100%;height:auto}
 @media (max-width:1000px){#hero .hero__factory{order:1;align-self:auto}#hero .hero__factory .if-root{height:auto;width:100%}#hero .hero__factory .if-stage{height:auto}#hero .hero__factory .if-stage svg{height:auto}}
 
@@ -326,8 +211,6 @@ html{scroll-behavior:smooth}
 #hero .lead{max-width:none}
 @media (min-width:1001px){#hero .lead__nw{white-space:nowrap}}
 
-
-/* ---- FAQ: the AIQB-local style, title beside a ruled list with a vertical answer line ---- */
 #faq .faq__inner{max-width:var(--page-max);margin-inline:auto}
 #faq .faq__main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px 48px;align-items:start}
 #faq .faq__main h2{font-size:clamp(1.9rem,1rem + 2vw,2.6rem);text-wrap:balance}
@@ -345,7 +228,6 @@ html{scroll-behavior:smooth}
 #faq .faq__a p{margin:0}
 @media (max-width:1000px){#faq .faq__main{grid-template-columns:minmax(0,1fr)}}
 
-/* ---- audience: four brand bubble cards ---- */
 #audience .aud__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 #audience .aud__cards li{position:relative;background:#fff;color:var(--black);border-radius:24px;padding:clamp(20px,1.8vw,28px);padding-top:72px;min-height:230px;display:flex;flex-direction:column;gap:8px}
 #audience .aud__cards li.is-shaped{border-radius:0}
