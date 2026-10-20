@@ -129,7 +129,7 @@ html{scroll-behavior:smooth}
 #register .reg__grid{display:grid;grid-template-columns:minmax(0,520px) minmax(320px,520px);gap:32px;align-items:start;justify-content:center}
 #register .reg__main{max-width:520px}
 #register h2{margin:0 0 14px;font-weight:800;font-style:italic;font-size:clamp(1.9rem,1rem + 2.6vw,3.3rem);line-height:1.02;letter-spacing:-.024em}
-#register .reg__lead{margin:0 0 28px;font-size:clamp(1.05rem,1rem + .4vw,1.25rem);line-height:1.4;font-weight:300;color:var(--grey)}
+#register .reg__lead{margin:0 0 10px;font-size:clamp(1.05rem,1rem + .4vw,1.25rem);line-height:1.4;font-weight:300;color:var(--grey)}
 #register .reg__form{display:flex;flex-direction:column;gap:16px}
 #register .tfield{display:flex;flex-direction:column;gap:8px}
 #register label{font-size:.9rem;font-weight:600;color:#fff}
@@ -141,6 +141,7 @@ html{scroll-behavior:smooth}
 #register .field--phone-input select{padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:14px}
 #register .field--phone-input .absolute{display:none}
 #register .field--phone-input .relative.flex-1{position:static}
+#register .reg__lead:last-of-type{margin-bottom:28px}
 #register .tcheck{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;font-size:.9rem;font-weight:300;color:var(--grey);margin-top:4px}
 #register .tcheck input{width:20px;height:20px;margin:0;accent-color:var(--orange)}
 #register .tcheck a{color:#fff}
@@ -226,6 +227,7 @@ html{scroll-behavior:smooth}
 #faq .faq__row[open] .faq__chev{transform:rotate(180deg)}
 #faq .faq__a{margin:0 0 24px;padding:2px 0 2px 16px;border-left:2px solid var(--grey);max-width:560px;font-size:1rem;line-height:1.5;font-weight:400;color:#444}
 #faq .faq__a p{margin:0}
+#faq .faq__a p+p{margin-top:.6em}
 @media (max-width:1000px){#faq .faq__main{grid-template-columns:minmax(0,1fr)}}
 
 #audience .aud__cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
