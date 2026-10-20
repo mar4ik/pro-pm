@@ -6,7 +6,7 @@ export const C = {
   cream: '#F5F5F5', amber: '#FFCA53', coral: '#FFB0E8', teal: '#00C4B1', lemon: '#ffe45c', grey: '#D1D1D1',
 };
 
-export const VIEW = { full: '30 30 540 540' };
+export const VIEW = { full: '60 60 480 480' };
 
 /** A brand chat box, 190×112, origin at its centre, tail bottom-left, one word inside. */
 function ChatBox({ id, fill, ink, label, check }: { id: string; fill: string; ink: string; label: string; check?: boolean }) {
@@ -95,7 +95,7 @@ export const Factory = forwardRef<SVGSVGElement>(function Factory(_props, ref) {
 
       {/* ---------- 4. the phone (centred) ---------- */}
       <g id="phone">
-        <circle id="phone-glow" cx={300} cy={340} r={190} fill="url(#if-glow)" opacity={0} />
+        <circle id="phone-glow" cx={300} cy={340} r={170} fill="url(#if-glow)" opacity={0} />
         <rect x={190} y={150} width={220} height={390} rx={40} fill={C.navy} />
         <rect x={205} y={168} width={190} height={354} rx={28} fill="url(#if-screen)" />
         <rect id="ui-nav" x={222} y={190} width={156} height={28} rx={14} fill={C.navy} />

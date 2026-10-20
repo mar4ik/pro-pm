@@ -11,7 +11,7 @@ export interface FactoryTimelines {
 export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
   const q = gsap.utils.selector(svg);
   const BULB = 4.2;
-  const spots = [[-130, -120], [0, 0], [130, 120]];
+  const spots = [[-130, -130], [0, -10], [130, 110]];
 
   const reset = () => {
     gsap.set(q('#bulb'), { x: 300, y: -260, scale: BULB, opacity: 1, transformOrigin: '50% 100%' });
@@ -34,7 +34,7 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
 
   // 1 — a huge lamp drops in
   tl.addLabel('lamp', LABELS.lamp)
-    .to(q('#bulb'), { y: 470, duration: 1.3, ease: 'bounce.out' }, 0.2)
+    .to(q('#bulb'), { y: 468, duration: 1.3, ease: 'bounce.out' }, 0.2)
     .to(q('#bulb'), { scaleY: BULB * 0.84, scaleX: BULB * 1.1, duration: 0.1, ease: 'power1.out' }, 0.95)
     .to(q('#bulb'), { scaleY: BULB, scaleX: BULB, duration: 0.35, ease: 'elastic.out(1,0.5)' }, 1.05)
     .to(q('#bulb-glow'), { scale: 1.22, duration: 0.35, yoyo: true, repeat: 3, transformOrigin: '50% 50%' }, 1.6)
@@ -64,7 +64,7 @@ export function buildTimelines(svg: SVGSVGElement): FactoryTimelines {
 
   // 4 — the event becomes a product
   tl.addLabel('product', LABELS.product)
-    .to(q('#phone'), { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'back.out(1.5)' }, 11.4)
+    .to(q('#phone'), { opacity: 1, y: -12, scale: 1, duration: 0.9, ease: 'back.out(1.5)' }, 11.4)
     .to(q('#ui-nav, #ui-card-1, #ui-card-2, #ui-card-3, #ui-btn'), { scale: 1, duration: 0.5, ease: 'back.out(1.8)', stagger: 0.2 }, 12.1)
     .to(q('#phone-glow'), { opacity: 0.9, scale: 1.1, duration: 0.5, ease: 'power2.out' }, 13.6)
     .to(q('#phone-glow'), { opacity: 0, scale: 1.2, duration: 0.6, ease: 'power2.in' }, 14.1)
